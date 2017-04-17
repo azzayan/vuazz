@@ -1,3 +1,7 @@
 node_modules/
 .expo/
 npm-debug.*
+.eslintrc
+c2478188a17af4e228eb5b8b09baf5fd
+haste-map-react-native-packager-b12fedaabd009bd78e5c86bb3b125838
+react-native-packager-cache*
