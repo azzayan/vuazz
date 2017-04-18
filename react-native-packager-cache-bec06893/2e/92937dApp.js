@@ -10,8 +10,16 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require('react-native');
 
-var App = function (_React$Component) {
-  babelHelpers.inherits(App, _React$Component);
+var _Header = require('./src/components/Header');
+
+var _Header2 = babelHelpers.interopRequireDefault(_Header);
+
+var _AlbumList = require('./src/components/AlbumList');
+
+var _AlbumList2 = babelHelpers.interopRequireDefault(_AlbumList);
+
+var App = function (_Component) {
+  babelHelpers.inherits(App, _Component);
 
   function App() {
     babelHelpers.classCallCheck(this, App);
@@ -23,55 +31,27 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         _reactNative.View,
-        { style: styles.container, __source: {
+        {
+          __source: {
             fileName: _jsxFileName,
-            lineNumber: 7
+            lineNumber: 9
           }
         },
-        _react2.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 8
-            }
-          },
-          'Open up App.js to start working on your app!'
-        ),
-        _react2.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 9
-            }
-          },
-          'Changes you make will automatically reload.'
-        ),
-        _react2.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 10
-            }
-          },
-          'Shake your phone to open the developer menu.'
-        )
+        _react2.default.createElement(_Header2.default, { headerText: 'Albums!', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 10
+          }
+        }),
+        _react2.default.createElement(_AlbumList2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          }
+        })
       );
     }
   }]);
   return App;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = App;
-
-
-var styles = _reactNative.StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
