@@ -31,8 +31,7 @@ var App = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         _reactNative.View,
-        {
-          __source: {
+        { style: { flex: 1 }, __source: {
             fileName: _jsxFileName,
             lineNumber: 9
           }

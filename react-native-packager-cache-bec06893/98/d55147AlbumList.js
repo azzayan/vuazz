@@ -57,7 +57,7 @@ var AlbumList = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactNative.View,
+        _reactNative.ScrollView,
         {
           __source: {
             fileName: _jsxFileName,
