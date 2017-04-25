@@ -10,13 +10,17 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require('react-native');
 
+var _firebase = require('firebase');
+
+var _firebase2 = babelHelpers.interopRequireDefault(_firebase);
+
 var _Header = require('./src/components/Header');
 
 var _Header2 = babelHelpers.interopRequireDefault(_Header);
 
-var _AlbumList = require('./src/components/AlbumList');
+var _LoginForm = require('./src/components/LoginForm');
 
-var _AlbumList2 = babelHelpers.interopRequireDefault(_AlbumList);
+var _LoginForm2 = babelHelpers.interopRequireDefault(_LoginForm);
 
 var App = function (_Component) {
   babelHelpers.inherits(App, _Component);
@@ -27,24 +31,36 @@ var App = function (_Component) {
   }
 
   babelHelpers.createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      _firebase2.default.initializeApp({
+        apiKey: 'AIzaSyBvNybWuCqTS8by01nZ3k_FoyiD0M3yjuU',
+        authDomain: 'vuazz-159200.firebaseapp.com',
+        databaseURL: 'https://vuazz-159200.firebaseio.com',
+        projectId: 'vuazz-159200',
+        storageBucket: 'vuazz-159200.appspot.com',
+        messagingSenderId: '380754719060'
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         _reactNative.View,
         { style: { flex: 1 }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 9
+            lineNumber: 21
           }
         },
-        _react2.default.createElement(_Header2.default, { headerText: 'Albums!', __source: {
+        _react2.default.createElement(_Header2.default, { headerText: 'Authentication', __source: {
             fileName: _jsxFileName,
-            lineNumber: 10
+            lineNumber: 22
           }
         }),
-        _react2.default.createElement(_AlbumList2.default, {
+        _react2.default.createElement(_LoginForm2.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 23
           }
         })
       );
