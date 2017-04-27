@@ -10,9 +10,17 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require('react-native');
 
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
 var _firebase = require('firebase');
 
 var _firebase2 = babelHelpers.interopRequireDefault(_firebase);
+
+var _reducers = require('./src/reducers');
+
+var _reducers2 = babelHelpers.interopRequireDefault(_reducers);
 
 var _Header = require('./src/components/Header');
 
@@ -29,6 +37,10 @@ var _Button2 = babelHelpers.interopRequireDefault(_Button);
 var _Spinner = require('./src/components/Spinner');
 
 var _Spinner2 = babelHelpers.interopRequireDefault(_Spinner);
+
+var _LibraryList = require('./src/components/LibraryList');
+
+var _LibraryList2 = babelHelpers.interopRequireDefault(_LibraryList);
 
 var App = function (_Component) {
   babelHelpers.inherits(App, _Component);
@@ -70,6 +82,17 @@ var App = function (_Component) {
       });
     }
   }, {
+    key: 'reloadReducer',
+    value: function reloadReducer() {
+      if (module.hot) {
+        module.hot.accept('./src/reducers', function () {
+          store.replaceReducer(nextRootReducer);
+        });
+      }
+
+      return store;
+    }
+  }, {
     key: 'renderContent',
     value: function renderContent() {
       switch (this.state.loggedIn) {
@@ -80,7 +103,7 @@ var App = function (_Component) {
                 return _firebase2.default.auth().signOut();
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 35
+                lineNumber: 49
               }
             },
             'Log Out'
@@ -89,13 +112,13 @@ var App = function (_Component) {
           return _react2.default.createElement(_LoginForm2.default, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 40
+              lineNumber: 54
             }
           });
         default:
           return _react2.default.createElement(_Spinner2.default, { size: 'large', __source: {
               fileName: _jsxFileName,
-              lineNumber: 42
+              lineNumber: 56
             }
           });
       }
@@ -104,18 +127,31 @@ var App = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactNative.View,
-        { style: { flex: 1 }, __source: {
+        _reactRedux.Provider,
+        { store: this.reloadReducer(), __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 62
           }
         },
-        _react2.default.createElement(_Header2.default, { headerText: 'Authentication', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 49
-          }
-        }),
-        this.renderContent()
+        _react2.default.createElement(
+          _reactNative.View,
+          { style: { flex: 1 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            }
+          },
+          _react2.default.createElement(_Header2.default, { headerText: 'Tech Stack', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 64
+            }
+          }),
+          _react2.default.createElement(_LibraryList2.default, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 65
+            }
+          })
+        )
       );
     }
   }]);
@@ -123,3 +159,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
+
+
+var store = (0, _redux.createStore)(_reducers2.default);
+var nextRootReducer = require('./src/reducers/index');

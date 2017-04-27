@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import firebase from 'firebase';
+import reducers from './src/reducers';
 import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
 import Button from './src/components/Button';
 import Spinner from './src/components/Spinner';
+import LibraryList from './src/components/LibraryList';
 
 export default class App extends Component {
   state = { loggedIn: null }
@@ -28,6 +32,16 @@ export default class App extends Component {
     });
   }
 
+  reloadReducer() {
+    if (module.hot) {
+      module.hot.accept('./src/reducers', () => {
+        store.replaceReducer(nextRootReducer);
+      });
+    }
+
+    return store;
+  }
+
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
@@ -45,10 +59,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header headerText="Authentication" />
-        {this.renderContent()}
-      </View>
+      <Provider store={this.reloadReducer()}>
+        <View style={{ flex: 1 }}>
+          <Header headerText="Tech Stack" />
+          <LibraryList />
+        </View>
+      </Provider>
     );
   }
 }
+
+const store = createStore(reducers);
+const nextRootReducer = require('./src/reducers/index');
