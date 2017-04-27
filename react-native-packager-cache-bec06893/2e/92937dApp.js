@@ -22,10 +22,6 @@ var _reducers = require('./src/reducers');
 
 var _reducers2 = babelHelpers.interopRequireDefault(_reducers);
 
-var _Header = require('./src/components/Header');
-
-var _Header2 = babelHelpers.interopRequireDefault(_Header);
-
 var _LoginForm = require('./src/components/LoginForm');
 
 var _LoginForm2 = babelHelpers.interopRequireDefault(_LoginForm);
@@ -37,10 +33,6 @@ var _Button2 = babelHelpers.interopRequireDefault(_Button);
 var _Spinner = require('./src/components/Spinner');
 
 var _Spinner2 = babelHelpers.interopRequireDefault(_Spinner);
-
-var _LibraryList = require('./src/components/LibraryList');
-
-var _LibraryList2 = babelHelpers.interopRequireDefault(_LibraryList);
 
 var App = function (_Component) {
   babelHelpers.inherits(App, _Component);
@@ -133,25 +125,12 @@ var App = function (_Component) {
             lineNumber: 62
           }
         },
-        _react2.default.createElement(
-          _reactNative.View,
-          { style: { flex: 1 }, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 63
-            }
-          },
-          _react2.default.createElement(_Header2.default, { headerText: 'Tech Stack', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 64
-            }
-          }),
-          _react2.default.createElement(_LibraryList2.default, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 65
-            }
-          })
-        )
+        _react2.default.createElement(_LoginForm2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          }
+        })
       );
     }
   }]);

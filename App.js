@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import firebase from 'firebase';
 import reducers from './src/reducers';
-import Header from './src/components/Header';
+//import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
 import Button from './src/components/Button';
 import Spinner from './src/components/Spinner';
-import LibraryList from './src/components/LibraryList';
+//import LibraryList from './src/components/LibraryList';
 
 export default class App extends Component {
   state = { loggedIn: null }
@@ -60,10 +60,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={this.reloadReducer()}>
-        <View style={{ flex: 1 }}>
-          <Header headerText="Tech Stack" />
-          <LibraryList />
-        </View>
+        <LoginForm />
       </Provider>
     );
   }
