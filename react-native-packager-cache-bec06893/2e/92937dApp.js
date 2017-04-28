@@ -8,8 +8,6 @@ var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
-
 var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
@@ -17,6 +15,10 @@ var _redux = require('redux');
 var _firebase = require('firebase');
 
 var _firebase2 = babelHelpers.interopRequireDefault(_firebase);
+
+var _reduxThunk = require('redux-thunk');
+
+var _reduxThunk2 = babelHelpers.interopRequireDefault(_reduxThunk);
 
 var _reducers = require('./src/reducers');
 
@@ -95,7 +97,7 @@ var App = function (_Component) {
                 return _firebase2.default.auth().signOut();
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 49
+                lineNumber: 47
               }
             },
             'Log Out'
@@ -104,13 +106,13 @@ var App = function (_Component) {
           return _react2.default.createElement(_LoginForm2.default, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 52
             }
           });
         default:
           return _react2.default.createElement(_Spinner2.default, { size: 'large', __source: {
               fileName: _jsxFileName,
-              lineNumber: 56
+              lineNumber: 54
             }
           });
       }
@@ -122,13 +124,13 @@ var App = function (_Component) {
         _reactRedux.Provider,
         { store: this.reloadReducer(), __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 60
           }
         },
         _react2.default.createElement(_LoginForm2.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 61
           }
         })
       );
@@ -140,5 +142,5 @@ var App = function (_Component) {
 exports.default = App;
 
 
-var store = (0, _redux.createStore)(_reducers2.default);
+var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 var nextRootReducer = require('./src/reducers/index');

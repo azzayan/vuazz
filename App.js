@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
-//import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
 import Button from './src/components/Button';
 import Spinner from './src/components/Spinner';
-//import LibraryList from './src/components/LibraryList';
 
 export default class App extends Component {
   state = { loggedIn: null }
@@ -66,5 +64,5 @@ export default class App extends Component {
   }
 }
 
-const store = createStore(reducers);
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 const nextRootReducer = require('./src/reducers/index');
