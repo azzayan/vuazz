@@ -36,6 +36,10 @@ var _Spinner = require('./src/components/Spinner');
 
 var _Spinner2 = babelHelpers.interopRequireDefault(_Spinner);
 
+var _Router = require('./src/Router');
+
+var _Router2 = babelHelpers.interopRequireDefault(_Router);
+
 var App = function (_Component) {
   babelHelpers.inherits(App, _Component);
 
@@ -97,7 +101,7 @@ var App = function (_Component) {
                 return _firebase2.default.auth().signOut();
               }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 47
+                lineNumber: 48
               }
             },
             'Log Out'
@@ -106,13 +110,13 @@ var App = function (_Component) {
           return _react2.default.createElement(_LoginForm2.default, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 52
+              lineNumber: 53
             }
           });
         default:
           return _react2.default.createElement(_Spinner2.default, { size: 'large', __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 55
             }
           });
       }
@@ -124,13 +128,13 @@ var App = function (_Component) {
         _reactRedux.Provider,
         { store: this.reloadReducer(), __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 61
           }
         },
-        _react2.default.createElement(_LoginForm2.default, {
+        _react2.default.createElement(_Router2.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 62
           }
         })
       );

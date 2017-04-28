@@ -7,6 +7,7 @@ import reducers from './src/reducers';
 import LoginForm from './src/components/LoginForm';
 import Button from './src/components/Button';
 import Spinner from './src/components/Spinner';
+import Router from './src/Router';
 
 export default class App extends Component {
   state = { loggedIn: null }
@@ -58,7 +59,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={this.reloadReducer()}>
-        <LoginForm />
+        <Router />
       </Provider>
     );
   }

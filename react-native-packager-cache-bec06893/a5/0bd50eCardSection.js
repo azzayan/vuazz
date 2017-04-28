@@ -12,7 +12,7 @@ var _reactNative = require('react-native');
 var CardSection = function CardSection(props) {
   return _react2.default.createElement(
     _reactNative.View,
-    { style: styles.containerStyle, __source: {
+    { style: [styles.containerStyle, props.style], __source: {
         fileName: _jsxFileName,
         lineNumber: 6
       }
