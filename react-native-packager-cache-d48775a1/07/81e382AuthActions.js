@@ -32,10 +32,10 @@ var loginUser = exports.loginUser = function loginUser(_ref) {
   return function (dispatch) {
     dispatch({ type: _types.LOGIN_USER_START });
 
-    _firebase2.default.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+    _firebase2.default.auth().signInWithEmailAndPassword(email.trim(), password.trim()).then(function (user) {
       return loginUserSuccess(dispatch, user);
-    }).catch(function (error) {
-      _firebase2.default.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+    }).catch(function () {
+      _firebase2.default.auth().createUserWithEmailAndPassword(email.trim(), password.trim()).then(function (user) {
         return loginUserSuccess(dispatch, user);
       }).catch(function () {
         return loginUserFail(dispatch);

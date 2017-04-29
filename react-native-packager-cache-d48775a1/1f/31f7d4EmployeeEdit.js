@@ -153,7 +153,7 @@ var EmployeeEdit = function (_Component) {
               lineNumber: 53
             }
           },
-          'Are you sure you want to delete this?'
+          'Are you sure you want to delete this employee?'
         )
       );
     }
