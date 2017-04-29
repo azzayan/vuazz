@@ -38,6 +38,17 @@ var EmployeeCreate = function (_Component) {
   }
 
   babelHelpers.createClass(EmployeeCreate, [{
+    key: 'onButtonPress',
+    value: function onButtonPress() {
+      var _props = this.props,
+          name = _props.name,
+          phone = _props.phone,
+          shift = _props.shift;
+
+
+      this.props.employeeCreate({ name: name, phone: phone, shift: shift || 'Monday' });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -47,7 +58,7 @@ var EmployeeCreate = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 19
           }
         },
         _react2.default.createElement(
@@ -55,7 +66,7 @@ var EmployeeCreate = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 14
+              lineNumber: 20
             }
           },
           _react2.default.createElement(_Input2.default, {
@@ -67,7 +78,7 @@ var EmployeeCreate = function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 21
             }
           })
         ),
@@ -76,7 +87,7 @@ var EmployeeCreate = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 23
+              lineNumber: 29
             }
           },
           _react2.default.createElement(_Input2.default, {
@@ -88,7 +99,7 @@ var EmployeeCreate = function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 24
+              lineNumber: 30
             }
           })
         ),
@@ -97,14 +108,14 @@ var EmployeeCreate = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 32
+              lineNumber: 38
             }
           },
           _react2.default.createElement(
             _reactNative.Text,
             { style: styles.pickerTextStyle, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 33
+                lineNumber: 39
               }
             },
             'Shift'
@@ -119,42 +130,42 @@ var EmployeeCreate = function (_Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 34
+                lineNumber: 40
               }
             },
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Monday', value: 'Monday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 39
+                lineNumber: 45
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Tuesday', value: 'Tuesday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 40
+                lineNumber: 46
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Wednesday', value: 'Wednesday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 41
+                lineNumber: 47
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Thursday', value: 'Thursday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 42
+                lineNumber: 48
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Friday', value: 'Friday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 43
+                lineNumber: 49
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Saturday', value: 'Saturday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 44
+                lineNumber: 50
               }
             }),
             _react2.default.createElement(_reactNative.Picker.Item, { label: 'Sunday', value: 'Sunday', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 45
+                lineNumber: 51
               }
             })
           )
@@ -164,15 +175,14 @@ var EmployeeCreate = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 49
+              lineNumber: 55
             }
           },
           _react2.default.createElement(
             _Button2.default,
-            {
-              __source: {
+            { onPress: this.onButtonPress.bind(this), __source: {
                 fileName: _jsxFileName,
-                lineNumber: 50
+                lineNumber: 56
               }
             },
             'Create'
@@ -201,4 +211,4 @@ var mapStateToProps = function mapStateToProps(state) {
   return { name: name, phone: phone, shift: shift };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { employeeUpdate: _actions.employeeUpdate })(EmployeeCreate);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { employeeUpdate: _actions.employeeUpdate, employeeCreate: _actions.employeeCreate })(EmployeeCreate);

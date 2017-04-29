@@ -8,3 +8,4 @@ var LOGIN_USER_SUCCESS = exports.LOGIN_USER_SUCCESS = 'login_user_success';
 var LOGIN_USER_FAIL = exports.LOGIN_USER_FAIL = 'login_user_fail';
 
 var EMPLOYEE_UPDATE = exports.EMPLOYEE_UPDATE = 'employee_update';
+var EMPLOYEE_CREATE = exports.EMPLOYEE_CREATE = 'employee_create';

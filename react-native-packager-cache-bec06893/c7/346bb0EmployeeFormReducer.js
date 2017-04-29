@@ -17,6 +17,8 @@ exports.default = function () {
   switch (action.type) {
     case _types.EMPLOYEE_UPDATE:
       return babelHelpers.extends({}, state, babelHelpers.defineProperty({}, action.payload.prop, action.payload.value));
+    case _types.EMPLOYEE_CREATE:
+      return INITIAL_STATE;
     default:
       return state;
   }
