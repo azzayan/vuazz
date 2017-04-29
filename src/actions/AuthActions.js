@@ -8,13 +8,6 @@ import {
   LOGIN_USER_START
 } from './types';
 
-export const selectLibrary = (libraryId) => {
-  return {
-    type: 'select_library',
-    payload: libraryId
-  };
-};
-
 export const emailChanged = (text) => {
   return {
     type: EMAIL_CHANGED,
@@ -36,10 +29,9 @@ export const loginUser = ({ email, password }) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
       .catch((error) => {
-        console.log('hey man theres an error with firebase: ', error);
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(user => loginUserSuccess(dispatch, user))
-          .catch(loginUserFail(dispatch));
+          .catch(() => loginUserFail(dispatch));
       });
   };
 };

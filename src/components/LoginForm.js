@@ -30,7 +30,7 @@ class LoginForm extends Component {
 
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
-        Log In
+        Login
       </Button>
     );
   }
@@ -41,22 +41,25 @@ class LoginForm extends Component {
         <CardSection>
           <Input
             label="Email"
-            placeholder="name@email.com"
+            placeholder="user@email.com"
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
           />
         </CardSection>
+
         <CardSection>
           <Input
             secureTextEntry
             label="Password"
-            placeholder="becauseParksAreCool"
+            placeholder="AcAd!a"
             onChangeText={this.onPasswordChange.bind(this)}
             value={this.props.password}
           />
         </CardSection>
 
-        <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        <Text style={styles.errorTextStyle}>
+          {this.props.error}
+        </Text>
 
         <CardSection>
           {this.renderButton()}
