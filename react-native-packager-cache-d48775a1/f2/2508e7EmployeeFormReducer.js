@@ -15,11 +15,11 @@ exports.default = function () {
   var action = arguments[1];
 
   switch (action.type) {
-    case _types.EMPLOYEE_UPDATE:
+    case _types.PARK_CHECK_IN_UPDATE:
       return babelHelpers.extends({}, state, babelHelpers.defineProperty({}, action.payload.prop, action.payload.value));
-    case _types.EMPLOYEE_CREATE:
+    case _types.PARK_CHECK_IN_CREATE:
       return INITIAL_STATE;
-    case _types.EMPLOYEE_SAVE_SUCCESS:
+    case _types.PARK_CHECK_IN_SAVE_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;

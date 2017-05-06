@@ -1,31 +1,47 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
-import EmployeeList from './components/EmployeeList';
-import EmployeeCreate from './components/EmployeeCreate';
-import EmployeeEdit from './components/EmployeeEdit';
+import ParkList from './components/ParkList';
 
 const RouterComponent = () => {
+  const { headerBarStyle, titleStyle, routerStyle } = styles;
+
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router headerBarStyle={headerBarStyle} titleStyle={titleStyle} sceneStyle={routerStyle}>
       <Scene key="auth">
-        <Scene key="login" component={LoginForm} title="Please Log In" />
+        <Scene key="login" component={LoginForm} title="Sign Up / Log In" />
       </Scene>
 
       <Scene key="main">
-        <Scene
-          onRight={() => Actions.employeeCreate()}
-          rightTitle="Add"
-          key="employeeList"
-          component={EmployeeList}
-          title="Employees"
-          initial
-        />
-        <Scene key="employeeCreate" component={EmployeeCreate} title="Create Employee" />
-        <Scene key="employeeEdit" component={EmployeeEdit} title="Edit Employee" />
+        <Scene key="parkList" component={ParkList} title="National Park Units" />
       </Scene>
     </Router>
   );
+};
+
+const styles = {
+  routerStyle: {
+    paddingTop: 65
+  },
+  headerBarStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+    paddingTop: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    elevation: 2,
+    position: 'relative'
+  },
+  titleStyle: {
+    marginTop: 19,
+    marginBottom: 5,
+    color: 'white',
+    backgroundColor: '#6E1100',
+    fontSize: 22,
+    fontWeight: 'bold'
+  }
 };
 
 export default RouterComponent;

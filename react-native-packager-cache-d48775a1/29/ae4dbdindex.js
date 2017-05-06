@@ -14,14 +14,14 @@ Object.keys(_AuthActions).forEach(function (key) {
   });
 });
 
-var _EmployeeActions = require('./EmployeeActions');
+var _ParkActions = require('./ParkActions');
 
-Object.keys(_EmployeeActions).forEach(function (key) {
+Object.keys(_ParkActions).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _EmployeeActions[key];
+      return _ParkActions[key];
     }
   });
 });

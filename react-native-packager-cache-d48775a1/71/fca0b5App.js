@@ -8,15 +8,25 @@ var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
+var _reactRedux = require('react-redux');
 
-var _Header = require('./src/components/Header');
+var _redux = require('redux');
 
-var _Header2 = babelHelpers.interopRequireDefault(_Header);
+var _firebase = require('firebase');
 
-var _ParkList = require('./src/components/ParkList');
+var _firebase2 = babelHelpers.interopRequireDefault(_firebase);
 
-var _ParkList2 = babelHelpers.interopRequireDefault(_ParkList);
+var _reduxThunk = require('redux-thunk');
+
+var _reduxThunk2 = babelHelpers.interopRequireDefault(_reduxThunk);
+
+var _reducers = require('./src/reducers');
+
+var _reducers2 = babelHelpers.interopRequireDefault(_reducers);
+
+var _Router = require('./src/Router');
+
+var _Router2 = babelHelpers.interopRequireDefault(_Router);
 
 var App = function (_Component) {
   babelHelpers.inherits(App, _Component);
@@ -27,25 +37,42 @@ var App = function (_Component) {
   }
 
   babelHelpers.createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      _firebase2.default.initializeApp({
+        apiKey: 'AIzaSyBvNybWuCqTS8by01nZ3k_FoyiD0M3yjuU',
+        authDomain: 'vuazz-159200.firebaseapp.com',
+        databaseURL: 'https://vuazz-159200.firebaseio.com',
+        projectId: 'vuazz-159200',
+        storageBucket: 'vuazz-159200.appspot.com',
+        messagingSenderId: '380754719060'
+      });
+    }
+  }, {
+    key: 'reloadReducer',
+    value: function reloadReducer() {
+      if (module.hot) {
+        module.hot.accept('./src/reducers', function () {
+          store.replaceReducer(nextRootReducer);
+        });
+      }
+
+      return store;
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactNative.View,
-        {
-          __source: {
+        _reactRedux.Provider,
+        { store: this.reloadReducer(), __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 33
           }
         },
-        _react2.default.createElement(_Header2.default, { headerText: 'Parks!', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 53
-          }
-        }),
-        _react2.default.createElement(_ParkList2.default, {
+        _react2.default.createElement(_Router2.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 34
           }
         })
       );
@@ -55,3 +82,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
+
+
+var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+var nextRootReducer = require('./src/reducers/index');

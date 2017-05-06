@@ -11,7 +11,7 @@ exports.default = function () {
   var action = arguments[1];
 
   switch (action.type) {
-    case _types.EMPLOYEES_FETCH_SUCCESS:
+    case _types.PARKS_FETCH_SUCCESS:
       return action.payload;
     default:
       return state;

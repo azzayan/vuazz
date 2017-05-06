@@ -6,17 +6,17 @@ export default class ParkList extends Component {
   state = { parks: [] };
 
   componentWillMount() {
-    fetch('https://developer.nps.gov/api/v0/parks', {
+    fetch('https://developer.nps.gov/api/v0/parks?limit=50', {
       method: 'GET',
       headers: {
         'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23',
-        'Content-Type': 'application/json',
       }
     })
     .then((response) => {
       return response.json();
     })
     .then((responseData) => {
+      console.log(responseData.data);
       return this.setState({
         parks: responseData.data
       });
@@ -28,7 +28,7 @@ export default class ParkList extends Component {
 
   renderParks() {
     return this.state.parks.map(park =>
-      <ParkDetail key={park.fullName} park={park} />
+      <ParkDetail key={park.id} park={park} />
     );
   }
 

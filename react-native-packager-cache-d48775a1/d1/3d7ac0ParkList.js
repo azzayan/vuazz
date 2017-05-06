@@ -36,15 +36,15 @@ var ParkList = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('https://developer.nps.gov/api/v0/parks', {
+      fetch('https://developer.nps.gov/api/v0/parks?limit=50', {
         method: 'GET',
         headers: {
-          'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23',
-          'Content-Type': 'application/json'
+          'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23'
         }
       }).then(function (response) {
         return response.json();
       }).then(function (responseData) {
+        console.log(responseData.data);
         return _this2.setState({
           parks: responseData.data
         });
@@ -56,7 +56,7 @@ var ParkList = function (_Component) {
     key: 'renderParks',
     value: function renderParks() {
       return this.state.parks.map(function (park) {
-        return _react2.default.createElement(_ParkDetail2.default, { key: park.fullName, park: park, __source: {
+        return _react2.default.createElement(_ParkDetail2.default, { key: park.id, park: park, __source: {
             fileName: _jsxFileName,
             lineNumber: 31
           }

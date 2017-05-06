@@ -13,22 +13,19 @@ var _LoginForm = require('./components/LoginForm');
 
 var _LoginForm2 = babelHelpers.interopRequireDefault(_LoginForm);
 
-var _EmployeeList = require('./components/EmployeeList');
+var _ParkList = require('./components/ParkList');
 
-var _EmployeeList2 = babelHelpers.interopRequireDefault(_EmployeeList);
-
-var _EmployeeCreate = require('./components/EmployeeCreate');
-
-var _EmployeeCreate2 = babelHelpers.interopRequireDefault(_EmployeeCreate);
-
-var _EmployeeEdit = require('./components/EmployeeEdit');
-
-var _EmployeeEdit2 = babelHelpers.interopRequireDefault(_EmployeeEdit);
+var _ParkList2 = babelHelpers.interopRequireDefault(_ParkList);
 
 var RouterComponent = function RouterComponent() {
+  var headerBarStyle = styles.headerBarStyle,
+      titleStyle = styles.titleStyle,
+      routerStyle = styles.routerStyle;
+
+
   return _react2.default.createElement(
     _reactNativeRouterFlux.Router,
-    { sceneStyle: { paddingTop: 65 }, __source: {
+    { headerBarStyle: headerBarStyle, titleStyle: titleStyle, sceneStyle: routerStyle, __source: {
         fileName: _jsxFileName,
         lineNumber: 10
       }
@@ -40,7 +37,7 @@ var RouterComponent = function RouterComponent() {
           lineNumber: 11
         }
       },
-      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'login', component: _LoginForm2.default, title: 'Please Log In', __source: {
+      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'login', component: _LoginForm2.default, title: 'Sign Up / Log In', __source: {
           fileName: _jsxFileName,
           lineNumber: 12
         }
@@ -53,32 +50,38 @@ var RouterComponent = function RouterComponent() {
           lineNumber: 15
         }
       },
-      _react2.default.createElement(_reactNativeRouterFlux.Scene, {
-        onRight: function onRight() {
-          return _reactNativeRouterFlux.Actions.employeeCreate();
-        },
-        rightTitle: 'Add',
-        key: 'employeeList',
-        component: _EmployeeList2.default,
-        title: 'Employees',
-        initial: true,
-        __source: {
+      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'parkList', component: _ParkList2.default, title: 'National Park Units', __source: {
           fileName: _jsxFileName,
           lineNumber: 16
-        }
-      }),
-      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'employeeCreate', component: _EmployeeCreate2.default, title: 'Create Employee', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        }
-      }),
-      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'employeeEdit', component: _EmployeeEdit2.default, title: 'Edit Employee', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 25
         }
       })
     )
   );
+};
+
+var styles = {
+  routerStyle: {
+    paddingTop: 65
+  },
+  headerBarStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+    paddingTop: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    elevation: 2,
+    position: 'relative'
+  },
+  titleStyle: {
+    marginTop: 19,
+    marginBottom: 5,
+    color: 'white',
+    backgroundColor: '#6E1100',
+    fontSize: 22,
+    fontWeight: 'bold'
+  }
 };
 
 exports.default = RouterComponent;

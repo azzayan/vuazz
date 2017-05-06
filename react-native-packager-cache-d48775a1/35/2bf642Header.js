@@ -35,7 +35,7 @@ var Header = function Header(props) {
 
 var styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#6E1100',
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
@@ -47,7 +47,11 @@ var styles = {
     position: 'relative'
   },
   textStyle: {
-    fontSize: 20
+    marginTop: 9,
+    marginBottom: 5,
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold'
   }
 };
 

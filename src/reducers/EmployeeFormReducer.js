@@ -1,7 +1,7 @@
 import {
-  EMPLOYEE_UPDATE,
-  EMPLOYEE_CREATE,
-  EMPLOYEE_SAVE_SUCCESS
+  PARK_CHECK_IN_UPDATE,
+  PARK_CHECK_IN_CREATE,
+  PARK_CHECK_IN_SAVE_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -12,11 +12,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case EMPLOYEE_UPDATE:
+    case PARK_CHECK_IN_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
-    case EMPLOYEE_CREATE:
+    case PARK_CHECK_IN_CREATE:
       return INITIAL_STATE;
-    case EMPLOYEE_SAVE_SUCCESS:
+    case PARK_CHECK_IN_SAVE_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;
