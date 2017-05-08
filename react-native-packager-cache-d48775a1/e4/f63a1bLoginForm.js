@@ -11,27 +11,9 @@ var _reactNative = require('react-native');
 
 var _reactRedux = require('react-redux');
 
+var _nativeBase = require('native-base');
+
 var _actions = require('../actions');
-
-var _Card = require('./Card');
-
-var _Card2 = babelHelpers.interopRequireDefault(_Card);
-
-var _CardSection = require('./CardSection');
-
-var _CardSection2 = babelHelpers.interopRequireDefault(_CardSection);
-
-var _Input = require('./Input');
-
-var _Input2 = babelHelpers.interopRequireDefault(_Input);
-
-var _Button = require('./Button');
-
-var _Button2 = babelHelpers.interopRequireDefault(_Button);
-
-var _Spinner = require('./Spinner');
-
-var _Spinner2 = babelHelpers.interopRequireDefault(_Spinner);
 
 var LoginForm = function (_Component) {
   babelHelpers.inherits(LoginForm, _Component);
@@ -65,91 +47,131 @@ var LoginForm = function (_Component) {
     key: 'renderButton',
     value: function renderButton() {
       if (this.props.loading) {
-        return _react2.default.createElement(_Spinner2.default, { size: 'large', __source: {
+        return _react2.default.createElement(_nativeBase.Spinner, { style: styles.spinnerStyle, color: '#6AC700', __source: {
             fileName: _jsxFileName,
-            lineNumber: 28
+            lineNumber: 34
           }
         });
       }
 
       return _react2.default.createElement(
-        _Button2.default,
-        { onPress: this.onButtonPress.bind(this), __source: {
+        _nativeBase.Button,
+        { block: true, style: styles.buttonStyle, onPress: this.onButtonPress.bind(this), __source: {
             fileName: _jsxFileName,
-            lineNumber: 32
+            lineNumber: 38
           }
         },
-        'Login'
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: styles.buttonTextStyle, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          },
+          'Log In'
+        )
       );
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _Card2.default,
+        _nativeBase.Container,
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 40
+            lineNumber: 46
           }
         },
         _react2.default.createElement(
-          _CardSection2.default,
+          _nativeBase.Content,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 41
+              lineNumber: 47
             }
           },
-          _react2.default.createElement(_Input2.default, {
-            label: 'Email',
-            placeholder: 'user@email.com',
-            onChangeText: this.onEmailChange.bind(this),
-            value: this.props.email,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 42
-            }
-          })
-        ),
-        _react2.default.createElement(
-          _CardSection2.default,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 50
-            }
-          },
-          _react2.default.createElement(_Input2.default, {
-            secureTextEntry: true,
-            label: 'Password',
-            placeholder: 'AcAd!a',
-            onChangeText: this.onPasswordChange.bind(this),
-            value: this.props.password,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 51
-            }
-          })
-        ),
-        _react2.default.createElement(
-          _reactNative.Text,
-          { style: styles.errorTextStyle, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 60
-            }
-          },
-          this.props.error
-        ),
-        _react2.default.createElement(
-          _CardSection2.default,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 64
-            }
-          },
-          this.renderButton()
+          _react2.default.createElement(
+            _nativeBase.Form,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 48
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Item,
+              { inlineLabel: true, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 49
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 50
+                  }
+                },
+                'Email'
+              ),
+              _react2.default.createElement(_nativeBase.Input, {
+                onChangeText: this.onEmailChange.bind(this),
+                value: this.props.email,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 51
+                }
+              })
+            ),
+            _react2.default.createElement(
+              _nativeBase.Item,
+              { inlineLabel: true, last: true, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 57
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 58
+                  }
+                },
+                'Password'
+              ),
+              _react2.default.createElement(_nativeBase.Input, {
+                secureTextEntry: true,
+                onChangeText: this.onPasswordChange.bind(this),
+                value: this.props.password,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 59
+                }
+              })
+            )
+          ),
+          _react2.default.createElement(
+            _reactNative.Text,
+            { style: styles.errorTextStyle, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 67
+              }
+            },
+            this.props.error
+          ),
+          _react2.default.createElement(
+            _nativeBase.CardItem,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 71
+              }
+            },
+            this.renderButton()
+          )
         )
       );
     }
@@ -162,6 +184,28 @@ var styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  buttonTextStyle: {
+    alignSelf: 'center',
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  buttonStyle: {
+    flex: 1,
+    backgroundColor: '#6E1100',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#6AC700',
+    marginLeft: 5,
+    marginRight: 5
+  },
+  spinnerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 };
 

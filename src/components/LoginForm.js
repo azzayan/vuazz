@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
+import {
+  Container,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  CardItem,
+  Button,
+  Spinner
+} from 'native-base';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import Card from './Card';
-import CardSection from './CardSection';
-import Input from './Input';
-import Button from './Button';
-import Spinner from './Spinner';
 
 class LoginForm extends Component {
   onEmailChange(text) {
@@ -25,46 +31,48 @@ class LoginForm extends Component {
 
   renderButton() {
     if (this.props.loading) {
-      return <Spinner size="large" />;
+      return <Spinner style={styles.spinnerStyle} color='#6AC700' />;
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
-        Login
+      <Button block style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
+        <Text style={styles.buttonTextStyle}>Log In</Text>
       </Button>
     );
   }
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="user@email.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
+      <Container>
+        <Content>
+          <Form>
+            <Item inlineLabel>
+              <Label>Email</Label>
+              <Input
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
+              />
+            </Item>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            placeholder="AcAd!a"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
+            <Item inlineLabel last>
+              <Label>Password</Label>
+              <Input
+                secureTextEntry
+                onChangeText={this.onPasswordChange.bind(this)}
+                value={this.props.password}
+              />
+            </Item>
+          </Form>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
-      </Card>
+          <CardItem>
+            {this.renderButton()}
+          </CardItem>
+        </Content>
+      </Container>
     );
   }
 }
@@ -74,6 +82,28 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  buttonTextStyle: {
+    alignSelf: 'center',
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  buttonStyle: {
+    flex: 1,
+    backgroundColor: '#6E1100',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#6AC700',
+    marginLeft: 5,
+    marginRight: 5
+  },
+  spinnerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 };
 

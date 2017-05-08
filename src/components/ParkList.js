@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { Container, Content } from 'native-base';
 import ParkDetail from './ParkDetail';
 
 export default class ParkList extends Component {
   state = { parks: [] };
 
   componentWillMount() {
-    fetch('https://developer.nps.gov/api/v0/parks?limit=50', {
+    fetch('https://developer.nps.gov/api/v0/parks?parkCode=ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica', {
       method: 'GET',
       headers: {
         'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23',
@@ -16,7 +16,6 @@ export default class ParkList extends Component {
       return response.json();
     })
     .then((responseData) => {
-      console.log(responseData.data);
       return this.setState({
         parks: responseData.data
       });
@@ -34,9 +33,11 @@ export default class ParkList extends Component {
 
   render() {
     return (
-      <ScrollView>
-        {this.renderParks()}
-      </ScrollView>
+      <Container>
+        <Content>
+          {this.renderParks()}
+        </Content>
+      </Container>
     );
   }
 }

@@ -1,8 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
-import Card from './Card';
-import CardSection from './CardSection';
-import Button from './Button';
+import { Card, CardItem, Text, Body } from 'native-base';
 
 const ParkDetail = ({ park }) => {
   const { name, designation, states } = park;
@@ -10,13 +7,13 @@ const ParkDetail = ({ park }) => {
 
   return (
     <Card>
-      <CardSection>
-        <View style={headerContentStyle}>
+      <CardItem>
+        <Body>
           <Text style={headerTextStyle}>{name}</Text>
-          <Text>{designation}</Text>
-          <Text>State(s): {states}</Text>
-        </View>
-      </CardSection>
+          <Text style={headerContentStyle}>{designation}</Text>
+          <Text style={headerContentStyle}>State(s): {states}</Text>
+        </Body>
+      </CardItem>
     </Card>
   );
 };

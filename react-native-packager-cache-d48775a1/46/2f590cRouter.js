@@ -18,14 +18,12 @@ var _ParkList = require('./components/ParkList');
 var _ParkList2 = babelHelpers.interopRequireDefault(_ParkList);
 
 var RouterComponent = function RouterComponent() {
-  var headerBarStyle = styles.headerBarStyle,
-      titleStyle = styles.titleStyle,
-      routerStyle = styles.routerStyle;
+  var routerStyle = styles.routerStyle;
 
 
   return _react2.default.createElement(
     _reactNativeRouterFlux.Router,
-    { headerBarStyle: headerBarStyle, titleStyle: titleStyle, sceneStyle: routerStyle, __source: {
+    { sceneStyle: routerStyle, __source: {
         fileName: _jsxFileName,
         lineNumber: 10
       }
@@ -62,25 +60,6 @@ var RouterComponent = function RouterComponent() {
 var styles = {
   routerStyle: {
     paddingTop: 65
-  },
-  headerBarStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 60,
-    paddingTop: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    elevation: 2,
-    position: 'relative'
-  },
-  titleStyle: {
-    marginTop: 19,
-    marginBottom: 5,
-    color: 'white',
-    backgroundColor: '#6E1100',
-    fontSize: 22,
-    fontWeight: 'bold'
   }
 };
 

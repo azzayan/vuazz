@@ -7,19 +7,7 @@ var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
-
-var _Card = require('./Card');
-
-var _Card2 = babelHelpers.interopRequireDefault(_Card);
-
-var _CardSection = require('./CardSection');
-
-var _CardSection2 = babelHelpers.interopRequireDefault(_CardSection);
-
-var _Button = require('./Button');
-
-var _Button2 = babelHelpers.interopRequireDefault(_Button);
+var _nativeBase = require('native-base');
 
 var ParkDetail = function ParkDetail(_ref) {
   var park = _ref.park;
@@ -31,53 +19,52 @@ var ParkDetail = function ParkDetail(_ref) {
 
 
   return _react2.default.createElement(
-    _Card2.default,
+    _nativeBase.Card,
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 9
       }
     },
     _react2.default.createElement(
-      _CardSection2.default,
+      _nativeBase.CardItem,
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 10
         }
       },
       _react2.default.createElement(
-        _reactNative.View,
-        { style: headerContentStyle, __source: {
+        _nativeBase.Body,
+        {
+          __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 11
           }
         },
         _react2.default.createElement(
-          _reactNative.Text,
+          _nativeBase.Text,
           { style: headerTextStyle, __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 12
             }
           },
           name
         ),
         _react2.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
+          _nativeBase.Text,
+          { style: headerContentStyle, __source: {
               fileName: _jsxFileName,
-              lineNumber: 16
+              lineNumber: 13
             }
           },
           designation
         ),
         _react2.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
+          _nativeBase.Text,
+          { style: headerContentStyle, __source: {
               fileName: _jsxFileName,
-              lineNumber: 17
+              lineNumber: 14
             }
           },
           'State(s): ',

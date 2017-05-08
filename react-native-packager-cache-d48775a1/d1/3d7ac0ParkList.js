@@ -8,7 +8,7 @@ var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
+var _nativeBase = require('native-base');
 
 var _ParkDetail = require('./ParkDetail');
 
@@ -36,7 +36,7 @@ var ParkList = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('https://developer.nps.gov/api/v0/parks?limit=50', {
+      fetch('https://developer.nps.gov/api/v0/parks?parkCode=ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica', {
         method: 'GET',
         headers: {
           'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23'
@@ -44,7 +44,6 @@ var ParkList = function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (responseData) {
-        console.log(responseData.data);
         return _this2.setState({
           parks: responseData.data
         });
@@ -58,7 +57,7 @@ var ParkList = function (_Component) {
       return this.state.parks.map(function (park) {
         return _react2.default.createElement(_ParkDetail2.default, { key: park.id, park: park, __source: {
             fileName: _jsxFileName,
-            lineNumber: 31
+            lineNumber: 30
           }
         });
       });
@@ -67,14 +66,23 @@ var ParkList = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactNative.ScrollView,
+        _nativeBase.Container,
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37
+            lineNumber: 36
           }
         },
-        this.renderParks()
+        _react2.default.createElement(
+          _nativeBase.Content,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 37
+            }
+          },
+          this.renderParks()
+        )
       );
     }
   }]);

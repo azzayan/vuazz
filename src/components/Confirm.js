@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, View, Modal } from 'react-native';
-import CardSection from './CardSection';
-import Button from './Button';
+import { CardItem, Button } from 'native-base';
 
 const Confirm = ({ children, visible, onAccept, onDecline }) => {
-  const { containerStyle, textStyle, cardSectionStyle } = styles;
+  const { containerStyle, textStyle, cardItemStyle } = styles;
 
   return (
     <Modal
@@ -14,23 +13,23 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
       onRequestClose={() => {}}
     >
       <View style={containerStyle}>
-        <CardSection style={cardSectionStyle}>
+        <CardItem style={cardItemStyle}>
           <Text style={textStyle}>
             {children}
           </Text>
-        </CardSection>
+        </CardItem>
 
-        <CardSection>
+        <CardItem>
           <Button onPress={onAccept}>Yes</Button>
           <Button onPress={onDecline}>No</Button>
-        </CardSection>
+        </CardItem>
       </View>
     </Modal>
   );
 };
 
 const styles = {
-  cardSectionStyle: {
+  cardItemStyle: {
     justifyContent: 'center'
   },
   textStyle: {
