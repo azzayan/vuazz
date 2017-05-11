@@ -85,7 +85,7 @@ const styles = {
   },
   buttonTextStyle: {
     alignSelf: 'center',
-    color: '#FFF',
+    color: '#6E1100',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
@@ -93,7 +93,7 @@ const styles = {
   },
   buttonStyle: {
     flex: 1,
-    backgroundColor: '#6E1100',
+    backgroundColor: '#FFF',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#6AC700',

@@ -10,9 +10,9 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _nativeBase = require('native-base');
 
-var _ParkDetail = require('./ParkDetail');
+var _ParkListItem = require('./ParkListItem');
 
-var _ParkDetail2 = babelHelpers.interopRequireDefault(_ParkDetail);
+var _ParkListItem2 = babelHelpers.interopRequireDefault(_ParkListItem);
 
 var ParkList = function (_Component) {
   babelHelpers.inherits(ParkList, _Component);
@@ -55,7 +55,7 @@ var ParkList = function (_Component) {
     key: 'renderParks',
     value: function renderParks() {
       return this.state.parks.map(function (park) {
-        return _react2.default.createElement(_ParkDetail2.default, { key: park.id, park: park, __source: {
+        return _react2.default.createElement(_ParkListItem2.default, { key: park.id, park: park, __source: {
             fileName: _jsxFileName,
             lineNumber: 30
           }

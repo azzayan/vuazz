@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
-import ParkDetail from './ParkDetail';
+import ParkListItem from './ParkListItem';
 
 export default class ParkList extends Component {
   state = { parks: [] };
@@ -27,7 +27,7 @@ export default class ParkList extends Component {
 
   renderParks() {
     return this.state.parks.map(park =>
-      <ParkDetail key={park.id} park={park} />
+      <ParkListItem key={park.id} park={park} />
     );
   }
 
