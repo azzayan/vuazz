@@ -6,3 +6,5 @@ database.rules.json
 firebase.json
 functions/
 public/
+.idea/
+react-native-packager-cache-d48775a1/

@@ -17,6 +17,10 @@ var _ParkList = require('./components/ParkList');
 
 var _ParkList2 = babelHelpers.interopRequireDefault(_ParkList);
 
+var _ParkOverviewMain = require('./components/ParkOverviewMain');
+
+var _ParkOverviewMain2 = babelHelpers.interopRequireDefault(_ParkOverviewMain);
+
 var RouterComponent = function RouterComponent() {
   var routerStyle = styles.routerStyle;
 
@@ -25,19 +29,19 @@ var RouterComponent = function RouterComponent() {
     _reactNativeRouterFlux.Router,
     { sceneStyle: routerStyle, __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 11
       }
     },
     _react2.default.createElement(
       _reactNativeRouterFlux.Scene,
       { key: 'auth', __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 12
         }
       },
       _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'login', component: _LoginForm2.default, title: 'Sign Up / Log In', __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 13
         }
       })
     ),
@@ -45,12 +49,17 @@ var RouterComponent = function RouterComponent() {
       _reactNativeRouterFlux.Scene,
       { key: 'main', __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 16
         }
       },
       _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'parkList', component: _ParkList2.default, title: 'National Park Units', __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 17
+        }
+      }),
+      _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: 'parkOverview', component: _ParkOverviewMain2.default, title: 'Park Overview', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
         }
       })
     )
