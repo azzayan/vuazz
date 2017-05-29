@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {Container, Content} from 'native-base';
-import {TouchableOpacity} from 'react-native';
-import {Actions} from 'react-native-router-flux';
-import ParkListItem from './ParkListItem';
+import React, {Component} from "react";
+import {Container, Content} from "native-base";
+import {TouchableOpacity} from "react-native";
+import {Actions} from "react-native-router-flux";
+import ParkListItem from "./ParkListItem";
 
 export default class ParkList extends Component {
-    state = {parks: [], resource: ''};
+    state = {parks: []};
 
     componentWillMount() {
         const azsNationalParks = 'ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii';

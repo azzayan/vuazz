@@ -1,118 +1,108 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { connect } from 'react-redux';
-import {
-  Container,
-  Content,
-  Form,
-  Item,
-  Input,
-  Label,
-  CardItem,
-  Button,
-  Spinner
-} from 'native-base';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import React, {Component} from "react";
+import {Text} from "react-native";
+import {connect} from "react-redux";
+import {Button, CardItem, Container, Content, Form, Input, Item, Label, Spinner} from "native-base";
+import {emailChanged, loginUser, passwordChanged} from "../actions";
 
 class LoginForm extends Component {
-  onEmailChange(text) {
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
-
-  onButtonPress() {
-    const { email, password } = this.props;
-
-    this.props.loginUser({ email, password });
-  }
-
-  renderButton() {
-    if (this.props.loading) {
-      return <Spinner style={styles.spinnerStyle} color='#6AC700' />;
+    onEmailChange(text) {
+        this.props.emailChanged(text);
     }
 
-    return (
-      <Button block style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
-        <Text style={styles.buttonTextStyle}>Log In</Text>
-      </Button>
-    );
-  }
+    onPasswordChange(text) {
+        this.props.passwordChanged(text);
+    }
 
-  render() {
-    return (
-      <Container>
-        <Content>
-          <Form>
-            <Item inlineLabel>
-              <Label>Email</Label>
-              <Input
-                onChangeText={this.onEmailChange.bind(this)}
-                value={this.props.email}
-              />
-            </Item>
+    onButtonPress() {
+        const {email, password} = this.props;
 
-            <Item inlineLabel last>
-              <Label>Password</Label>
-              <Input
-                secureTextEntry
-                onChangeText={this.onPasswordChange.bind(this)}
-                value={this.props.password}
-              />
-            </Item>
-          </Form>
+        this.props.loginUser({email, password});
+    }
 
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
+    renderButton() {
+        if (this.props.loading) {
+            return <Spinner style={styles.spinnerStyle} color='#6AC700'/>;
+        }
 
-          <CardItem>
-            {this.renderButton()}
-          </CardItem>
-        </Content>
-      </Container>
-    );
-  }
+        return (
+            <Button block style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
+                <Text style={styles.buttonTextStyle}>Log In</Text>
+            </Button>
+        );
+    }
+
+    render() {
+        return (
+            <Container>
+                <Content>
+                    <Form>
+                        <Item inlineLabel>
+                            <Label>Email</Label>
+                            <Input
+                                onChangeText={this.onEmailChange.bind(this)}
+                                value={this.props.email}
+                            />
+                        </Item>
+
+                        <Item inlineLabel last>
+                            <Label>Password</Label>
+                            <Input
+                                secureTextEntry
+                                onChangeText={this.onPasswordChange.bind(this)}
+                                value={this.props.password}
+                            />
+                        </Item>
+                    </Form>
+
+                    <Text style={styles.errorTextStyle}>
+                        {this.props.error}
+                    </Text>
+
+                    <CardItem>
+                        {this.renderButton()}
+                    </CardItem>
+                </Content>
+            </Container>
+        );
+    }
 }
 
 const styles = {
-  errorTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
-    color: 'red'
-  },
-  buttonTextStyle: {
-    alignSelf: 'center',
-    color: '#6E1100',
-    fontSize: 16,
-    fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  buttonStyle: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#6AC700',
-    marginLeft: 5,
-    marginRight: 5
-  },
-  spinnerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+    errorTextStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: 'red'
+    },
+    buttonTextStyle: {
+        alignSelf: 'center',
+        color: '#6E1100',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10
+    },
+    buttonStyle: {
+        flex: 1,
+        backgroundColor: '#FFF',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#6AC700',
+        marginLeft: 5,
+        marginRight: 5
+    },
+    spinnerStyle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 };
 
-const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
+const mapStateToProps = ({auth}) => {
+    const {email, password, error, loading} = auth;
 
-  return { email, password, error, loading };
+    return {email, password, error, loading};
 };
 
 export default connect(mapStateToProps, {
-  emailChanged, passwordChanged, loginUser
+    emailChanged, passwordChanged, loginUser
 })(LoginForm);

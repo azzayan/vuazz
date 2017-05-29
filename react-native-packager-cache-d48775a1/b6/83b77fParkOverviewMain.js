@@ -1,15 +1,15 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var _jsxFileName = '/home/az/dev/projects/vuazz-mobile/src/components/ParkOverviewMain.js';
+var _jsxFileName = "/home/az/dev/projects/vuazz-mobile/src/components/ParkOverviewMain.js";
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
+var _reactNative = require("react-native");
 
-var _nativeBase = require('native-base');
+var _nativeBase = require("native-base");
 
 var ParkOverviewMain = function ParkOverviewMain(_ref) {
     var park = _ref.park;
@@ -63,7 +63,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                             lineNumber: 16
                         }
                     },
-                    'State(s): ',
+                    "State(s): ",
                     states
                 )
             ),
@@ -74,7 +74,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                         lineNumber: 20
                     }
                 },
-                'Description'
+                "Description"
             ),
             _react2.default.createElement(
                 _nativeBase.Card,
@@ -110,7 +110,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                         lineNumber: 28
                     }
                 },
-                'Weather'
+                "Weather"
             ),
             _react2.default.createElement(
                 _nativeBase.Card,

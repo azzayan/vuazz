@@ -1,6 +1,6 @@
-import React from 'react';
-import {Linking, Text} from 'react-native';
-import {Container, Content, Card, CardItem, Body, Button, Right} from 'native-base';
+import React from "react";
+import {Text} from "react-native";
+import {Body, Card, CardItem, Container, Content} from "native-base";
 
 const ParkOverviewMain = ({park}) => {
     const {fullName, description, states, url, weatherInfo} = park;
