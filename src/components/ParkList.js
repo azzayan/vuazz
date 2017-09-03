@@ -1,6 +1,6 @@
 import React, {Component} from "react";
+import {Text, TouchableOpacity} from "react-native";
 import {Container, Content} from "native-base";
-import {TouchableOpacity} from "react-native";
 import {Actions} from "react-native-router-flux";
 import ParkListItem from "./ParkListItem";
 
@@ -8,12 +8,13 @@ export default class ParkList extends Component {
     state = {parks: []};
 
     componentWillMount() {
-        const azsNationalParks = 'ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii';
+        const AZsPARKS = "ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii";
+        const API_KEY = "C127CF67-F403-4823-AA42-B87B1E235D23";
 
-        fetch(`https://developer.nps.gov/api/v0/parks?parkCode=${azsNationalParks}`, {
-            method: 'GET',
+        fetch(`https://developer.nps.gov/api/v0/parks?parkCode=${AZsPARKS}`, {
+            method: "GET",
             headers: {
-                'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23',
+                "Authorization": API_KEY
             }
         })
             .then((response) => {
@@ -25,7 +26,7 @@ export default class ParkList extends Component {
                 });
             })
             .catch((error) => {
-                console.log('There has been a problem with your fetch operation:', error.message);
+                console.log("There has been a problem with your fetch operation:", error.message);
             });
     }
 
@@ -40,6 +41,9 @@ export default class ParkList extends Component {
     render() {
         return (
             <Container>
+                <TouchableOpacity onPress={() => Actions.searchPage()}>
+                    <Text>Temporary link to Search Page</Text>
+                </TouchableOpacity>
                 <Content>
                     {this.renderParks()}
                 </Content>

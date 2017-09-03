@@ -8,9 +8,9 @@ var _react = require("react");
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _nativeBase = require("native-base");
-
 var _reactNative = require("react-native");
+
+var _nativeBase = require("native-base");
 
 var _reactNativeRouterFlux = require("react-native-router-flux");
 
@@ -40,12 +40,13 @@ var ParkList = function (_Component) {
         value: function componentWillMount() {
             var _this2 = this;
 
-            var azsNationalParks = 'ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii';
+            var AZsPARKS = "ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii";
+            var API_KEY = "C127CF67-F403-4823-AA42-B87B1E235D23";
 
-            fetch("https://developer.nps.gov/api/v0/parks?parkCode=" + azsNationalParks, {
-                method: 'GET',
+            fetch("https://developer.nps.gov/api/v0/parks?parkCode=" + AZsPARKS, {
+                method: "GET",
                 headers: {
-                    'Authorization': 'C127CF67-F403-4823-AA42-B87B1E235D23'
+                    "Authorization": API_KEY
                 }
             }).then(function (response) {
                 return response.json();
@@ -54,7 +55,7 @@ var ParkList = function (_Component) {
                     parks: responseData.data
                 });
             }).catch(function (error) {
-                console.log('There has been a problem with your fetch operation:', error.message);
+                console.log("There has been a problem with your fetch operation:", error.message);
             });
         }
     }, {
@@ -67,12 +68,12 @@ var ParkList = function (_Component) {
                             return _reactNativeRouterFlux.Actions.parkOverview({ park: park });
                         }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 34
+                            lineNumber: 35
                         }
                     },
                     _react2.default.createElement(_ParkListItem2.default, { key: park.id, park: park, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 35
+                            lineNumber: 36
                         }
                     })
                 );
@@ -86,15 +87,35 @@ var ParkList = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 42
+                        lineNumber: 43
                     }
                 },
+                _react2.default.createElement(
+                    _reactNative.TouchableOpacity,
+                    { onPress: function onPress() {
+                            return _reactNativeRouterFlux.Actions.searchPage();
+                        }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 44
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 45
+                            }
+                        },
+                        "Temporary link to Search Page"
+                    )
+                ),
                 _react2.default.createElement(
                     _nativeBase.Content,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 43
+                            lineNumber: 47
                         }
                     },
                     this.renderParks()
