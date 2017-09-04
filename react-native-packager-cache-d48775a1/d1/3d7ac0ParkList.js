@@ -93,7 +93,7 @@ var ParkList = function (_Component) {
                 _react2.default.createElement(
                     _reactNative.TouchableOpacity,
                     { onPress: function onPress() {
-                            return _reactNativeRouterFlux.Actions.searchPage();
+                            return _reactNativeRouterFlux.Actions.searchList();
                         }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 44

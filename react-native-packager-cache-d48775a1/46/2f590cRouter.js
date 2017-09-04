@@ -21,9 +21,9 @@ var _ParkOverviewMain = require("./components/ParkOverviewMain");
 
 var _ParkOverviewMain2 = babelHelpers.interopRequireDefault(_ParkOverviewMain);
 
-var _SearchPage = require("./components/SearchPage");
+var _SearchList = require("./components/SearchList");
 
-var _SearchPage2 = babelHelpers.interopRequireDefault(_SearchPage);
+var _SearchList2 = babelHelpers.interopRequireDefault(_SearchList);
 
 var RouterComponent = function RouterComponent() {
     var routerStyle = styles.routerStyle;
@@ -66,7 +66,7 @@ var RouterComponent = function RouterComponent() {
                     lineNumber: 19
                 }
             }),
-            _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: "searchPage", component: _SearchPage2.default, title: "Search for a Park!", __source: {
+            _react2.default.createElement(_reactNativeRouterFlux.Scene, { key: "searchList", component: _SearchList2.default, title: "Search for a Park!", __source: {
                     fileName: _jsxFileName,
                     lineNumber: 20
                 }

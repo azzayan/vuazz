@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {ScrollView, Text} from "react-native";
+import {Text, TouchableOpacity} from "react-native";
 import SearchInput, {createFilter} from "react-native-search-filter";
-import {CardItem, Container, Icon, Item} from "native-base";
+import {CardItem, Container, Content, Icon, Item} from "native-base";
 
 const KEYS_TO_FILTERS = ["fullName"];
 const styles = {
@@ -17,7 +17,7 @@ const styles = {
 };
 const {searchBoxStyle, headerTextStyle} = styles;
 
-export default class SearchPage extends Component {
+export default class SearchList extends Component {
     state = {parks: [], searchTerm: ""};
 
     componentWillMount() {
@@ -58,15 +58,17 @@ export default class SearchPage extends Component {
                         this.searchUpdated(term)
                     }}/>
                 </Item>
-                <ScrollView>
+                <Content>
                     {filteredParks.map(filteredPark => {
                         return (
-                            <CardItem key={filteredPark.id}>
-                                <Text style={headerTextStyle}>{filteredPark.fullName}</Text>
-                            </CardItem>
+                            <TouchableOpacity key={filteredPark.id}>
+                                <CardItem>
+                                    <Text style={headerTextStyle}>{filteredPark.fullName}</Text>
+                                </CardItem>
+                            </TouchableOpacity>
                         )
                     })}
-                </ScrollView>
+                </Content>
             </Container>
         )
     }

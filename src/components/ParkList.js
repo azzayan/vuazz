@@ -41,7 +41,7 @@ export default class ParkList extends Component {
     render() {
         return (
             <Container>
-                <TouchableOpacity onPress={() => Actions.searchPage()}>
+                <TouchableOpacity onPress={() => Actions.searchList()}>
                     <Text>Temporary link to Search Page</Text>
                 </TouchableOpacity>
                 <Content>
