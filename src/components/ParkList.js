@@ -1,20 +1,36 @@
 import React, {Component} from "react";
-import {Text, TouchableOpacity} from "react-native";
-import {Container, Content} from "native-base";
+import {TouchableOpacity} from "react-native";
+import {Container, Content, Icon, Item} from "native-base";
+import SearchInput, {createFilter} from "react-native-search-filter";
 import {Actions} from "react-native-router-flux";
 import ParkListItem from "./ParkListItem";
 
-export default class ParkList extends Component {
-    state = {parks: []};
+const KEYS_TO_FILTERS = ["fullName"];   // used for searching
+const styles = {
+    searchBoxStyle: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        margin: 10
+    },
+    headerTextStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+    }
+};
+const {searchBoxStyle} = styles;
 
+export default class ParkList extends Component {
+    state = {parks: [], searchTerm: "", filteredParks: []};
+
+    // fetches NPS data on startup
     componentWillMount() {
-        const AZsPARKS = "ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii";
+        const LIMIT = 600;  // total number of parks is over 500, so set limit to 600 to be safe
         const API_KEY = "C127CF67-F403-4823-AA42-B87B1E235D23";
 
-        fetch(`https://developer.nps.gov/api/v0/parks?parkCode=${AZsPARKS}`, {
+        fetch(`https://developer.nps.gov/api/v0/parks?limit=${LIMIT}`, {
             method: "GET",
             headers: {
-                "Authorization": API_KEY
+                "Authorization": API_KEY,
             }
         })
             .then((response) => {
@@ -30,20 +46,37 @@ export default class ParkList extends Component {
             });
     }
 
+    // used for search bar
+    searchUpdated(term) {
+        this.setState({searchTerm: term})
+    }
+
+    // render list of parks (filtered, unfiltered, don't matter)
     renderParks() {
-        return this.state.parks.map(park =>
-            <TouchableOpacity key={park.id} park={park} onPress={() => Actions.parkOverview({park})}>
-                <ParkListItem key={park.id} park={park}/>
-            </TouchableOpacity>
-        );
+        return this.state.filteredParks.map(park => {
+            return (
+                <TouchableOpacity key={park.id} park={park}
+                                  onPress={() => Actions.parkOverview({park})}>
+                    <ParkListItem key={park.id} park={park}/>
+                </TouchableOpacity>
+            )
+        });
     }
 
     render() {
+        // update filtered parks array from search bar
+        this.state.filteredParks = this.state.parks.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
+
         return (
             <Container>
-                <TouchableOpacity onPress={() => Actions.searchList()}>
-                    <Text>Temporary link to Search Page</Text>
-                </TouchableOpacity>
+                {/*search bar*/}
+                <Item>
+                    <Icon name="ios-search"/>
+                    <SearchInput style={searchBoxStyle} placeholder="Search..." onChangeText={(term) => {
+                        this.searchUpdated(term)
+                    }}/>
+                </Item>
+                {/*list of parks*/}
                 <Content>
                     {this.renderParks()}
                 </Content>

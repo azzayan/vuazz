@@ -12,11 +12,29 @@ var _reactNative = require("react-native");
 
 var _nativeBase = require("native-base");
 
+var _reactNativeSearchFilter = require("react-native-search-filter");
+
+var _reactNativeSearchFilter2 = babelHelpers.interopRequireDefault(_reactNativeSearchFilter);
+
 var _reactNativeRouterFlux = require("react-native-router-flux");
 
 var _ParkListItem = require("./ParkListItem");
 
 var _ParkListItem2 = babelHelpers.interopRequireDefault(_ParkListItem);
+
+var KEYS_TO_FILTERS = ["fullName"];
+var styles = {
+    searchBoxStyle: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        margin: 10
+    },
+    headerTextStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+    }
+};
+var searchBoxStyle = styles.searchBoxStyle;
 
 var ParkList = function (_Component) {
     babelHelpers.inherits(ParkList, _Component);
@@ -32,7 +50,7 @@ var ParkList = function (_Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = ParkList.__proto__ || Object.getPrototypeOf(ParkList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { parks: [] }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = ParkList.__proto__ || Object.getPrototypeOf(ParkList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { parks: [], searchTerm: "", filteredParks: [] }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
     }
 
     babelHelpers.createClass(ParkList, [{
@@ -40,10 +58,10 @@ var ParkList = function (_Component) {
         value: function componentWillMount() {
             var _this2 = this;
 
-            var AZsPARKS = "ever,voya,shen,grca,hosp,acad,gumo,bibe,cave,romo,dena,badl,wica,glca,hosp,jazz,gett,inde,gwmp,coga,linc,nama,vive,wamo,whho,wwii";
+            var LIMIT = 600;
             var API_KEY = "C127CF67-F403-4823-AA42-B87B1E235D23";
 
-            fetch("https://developer.nps.gov/api/v0/parks?parkCode=" + AZsPARKS, {
+            fetch("https://developer.nps.gov/api/v0/parks?limit=" + LIMIT, {
                 method: "GET",
                 headers: {
                     "Authorization": API_KEY
@@ -59,21 +77,27 @@ var ParkList = function (_Component) {
             });
         }
     }, {
+        key: "searchUpdated",
+        value: function searchUpdated(term) {
+            this.setState({ searchTerm: term });
+        }
+    }, {
         key: "renderParks",
         value: function renderParks() {
-            return this.state.parks.map(function (park) {
+            return this.state.filteredParks.map(function (park) {
                 return _react2.default.createElement(
                     _reactNative.TouchableOpacity,
-                    { key: park.id, park: park, onPress: function onPress() {
+                    { key: park.id, park: park,
+                        onPress: function onPress() {
                             return _reactNativeRouterFlux.Actions.parkOverview({ park: park });
                         }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 35
+                            lineNumber: 58
                         }
                     },
                     _react2.default.createElement(_ParkListItem2.default, { key: park.id, park: park, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 36
+                            lineNumber: 60
                         }
                     })
                 );
@@ -82,40 +106,45 @@ var ParkList = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
+            this.state.filteredParks = this.state.parks.filter((0, _reactNativeSearchFilter.createFilter)(this.state.searchTerm, KEYS_TO_FILTERS));
+
             return _react2.default.createElement(
                 _nativeBase.Container,
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 43
+                        lineNumber: 71
                     }
                 },
                 _react2.default.createElement(
-                    _reactNative.TouchableOpacity,
-                    { onPress: function onPress() {
-                            return _reactNativeRouterFlux.Actions.searchList();
-                        }, __source: {
+                    _nativeBase.Item,
+                    {
+                        __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 44
+                            lineNumber: 73
                         }
                     },
-                    _react2.default.createElement(
-                        _reactNative.Text,
-                        {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 45
-                            }
-                        },
-                        "Temporary link to Search Page"
-                    )
+                    _react2.default.createElement(_nativeBase.Icon, { name: "ios-search", __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 74
+                        }
+                    }),
+                    _react2.default.createElement(_reactNativeSearchFilter2.default, { style: searchBoxStyle, placeholder: "Search...", onChangeText: function onChangeText(term) {
+                            _this3.searchUpdated(term);
+                        }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 75
+                        }
+                    })
                 ),
                 _react2.default.createElement(
                     _nativeBase.Content,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 47
+                            lineNumber: 80
                         }
                     },
                     this.renderParks()
