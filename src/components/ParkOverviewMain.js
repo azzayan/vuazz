@@ -1,10 +1,25 @@
 import React from "react";
 import {Text} from "react-native";
-import {Body, Card, CardItem, Container, Content} from "native-base";
+import {Body, Button, Card, CardItem, Container, Content} from "native-base";
 
 const ParkOverviewMain = ({park}) => {
-    const {fullName, description, states, url, weatherInfo} = park;
-    const {headerContentStyle, headerTextStyle, subHeaderTextStyle} = styles;
+    const {
+        fullName,
+        description,
+        states,
+        url,
+        weatherInfo
+    } = park;
+    const {
+        headerContentStyle,
+        headerTextStyle,
+        subHeaderTextStyle,
+        subHeaderTitleContainerStyle,
+        descriptionContainerStyle,
+        checkInButtonStyle,
+        urlButtonStyle,
+        buttonTextStyle
+    } = styles;
 
     return (
 
@@ -16,22 +31,39 @@ const ParkOverviewMain = ({park}) => {
                 <Text style={headerContentStyle}>State(s): {states}</Text>
                 </Body>
 
+                {/*check in button*/}
+                <Button block success style={checkInButtonStyle}>
+                    <Text style={buttonTextStyle}>
+                        CHECK IN!
+                    </Text>
+                </Button>
+
                 {/* description */}
-                <Text style={subHeaderTextStyle}>Description</Text>
-                <Card style={{flex: 0}}>
+                <Card style={descriptionContainerStyle}>
+                    <CardItem style={subHeaderTitleContainerStyle}>
+                        <Text style={subHeaderTextStyle}>Description</Text>
+                    </CardItem>
                     <CardItem>
                         <Text>{description}</Text>
                     </CardItem>
                 </Card>
 
                 {/* weather info */}
-                <Text style={subHeaderTextStyle}>Weather</Text>
                 <Card style={{flex: 0}}>
+                    <CardItem style={subHeaderTitleContainerStyle}>
+                        <Text style={subHeaderTextStyle}>Weather</Text>
+                    </CardItem>
                     <CardItem>
                         <Text>{weatherInfo}</Text>
                     </CardItem>
                 </Card>
 
+                {/*link to park's official NPS page*/}
+                <Button block style={urlButtonStyle}>
+                    <Text style={buttonTextStyle}>
+                        Visit this park's official NPS page
+                    </Text>
+                </Button>
             </Content>
         </Container>
     );
@@ -39,16 +71,45 @@ const ParkOverviewMain = ({park}) => {
 
 const styles = {
     headerContentStyle: {
-        flexDirection: 'column',
-        justifyContent: 'space-around',
+        flexDirection: "column",
+        justifyContent: "space-around",
+        fontSize: 16
     },
     headerTextStyle: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: "bold"
     },
     subHeaderTextStyle: {
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: "bold",
+    },
+    subHeaderTitleContainerStyle: {
+        marginTop: 0,
+        marginBottom: -14
+    },
+    descriptionContainerStyle: {
+        marginTop: 20,
+        flex: 0
+    },
+    buttonTextStyle: {
+        flexDirection: "column",
+        justifyContent: "space-around",
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "white"
+    },
+    checkInButtonStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 20
+    },
+    urlButtonStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 20,
+        marginBottom: 20
     }
 };
 

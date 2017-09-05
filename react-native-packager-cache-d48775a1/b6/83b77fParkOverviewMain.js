@@ -20,7 +20,12 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
         weatherInfo = park.weatherInfo;
     var headerContentStyle = styles.headerContentStyle,
         headerTextStyle = styles.headerTextStyle,
-        subHeaderTextStyle = styles.subHeaderTextStyle;
+        subHeaderTextStyle = styles.subHeaderTextStyle,
+        subHeaderTitleContainerStyle = styles.subHeaderTitleContainerStyle,
+        descriptionContainerStyle = styles.descriptionContainerStyle,
+        checkInButtonStyle = styles.checkInButtonStyle,
+        urlButtonStyle = styles.urlButtonStyle,
+        buttonTextStyle = styles.buttonTextStyle;
 
 
     return _react2.default.createElement(
@@ -28,7 +33,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
         {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 11
+                lineNumber: 26
             }
         },
         _react2.default.createElement(
@@ -36,7 +41,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 12
+                    lineNumber: 27
                 }
             },
             _react2.default.createElement(
@@ -44,14 +49,14 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 14
+                        lineNumber: 29
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.Text,
                     { style: headerTextStyle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 15
+                            lineNumber: 30
                         }
                     },
                     fullName
@@ -60,7 +65,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                     _reactNative.Text,
                     { style: headerContentStyle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 31
                         }
                     },
                     "State(s): ",
@@ -68,27 +73,52 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                 )
             ),
             _react2.default.createElement(
-                _reactNative.Text,
-                { style: subHeaderTextStyle, __source: {
+                _nativeBase.Button,
+                { block: true, success: true, style: checkInButtonStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 20
+                        lineNumber: 35
                     }
                 },
-                "Description"
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: buttonTextStyle, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 36
+                        }
+                    },
+                    "CHECK IN!"
+                )
             ),
             _react2.default.createElement(
                 _nativeBase.Card,
-                { style: { flex: 0 }, __source: {
+                { style: descriptionContainerStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 21
+                        lineNumber: 42
                     }
                 },
+                _react2.default.createElement(
+                    _nativeBase.CardItem,
+                    { style: subHeaderTitleContainerStyle, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 43
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: subHeaderTextStyle, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 44
+                            }
+                        },
+                        "Description"
+                    )
+                ),
                 _react2.default.createElement(
                     _nativeBase.CardItem,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 22
+                            lineNumber: 46
                         }
                     },
                     _react2.default.createElement(
@@ -96,7 +126,7 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 23
+                                lineNumber: 47
                             }
                         },
                         description
@@ -104,27 +134,35 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                 )
             ),
             _react2.default.createElement(
-                _reactNative.Text,
-                { style: subHeaderTextStyle, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 28
-                    }
-                },
-                "Weather"
-            ),
-            _react2.default.createElement(
                 _nativeBase.Card,
                 { style: { flex: 0 }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 29
+                        lineNumber: 52
                     }
                 },
+                _react2.default.createElement(
+                    _nativeBase.CardItem,
+                    { style: subHeaderTitleContainerStyle, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 53
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: subHeaderTextStyle, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 54
+                            }
+                        },
+                        "Weather"
+                    )
+                ),
                 _react2.default.createElement(
                     _nativeBase.CardItem,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 30
+                            lineNumber: 56
                         }
                     },
                     _react2.default.createElement(
@@ -132,11 +170,28 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 31
+                                lineNumber: 57
                             }
                         },
                         weatherInfo
                     )
+                )
+            ),
+            _react2.default.createElement(
+                _nativeBase.Button,
+                { block: true, style: urlButtonStyle, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 62
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: buttonTextStyle, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 63
+                        }
+                    },
+                    "Visit this park's official NPS page"
                 )
             )
         )
@@ -145,16 +200,47 @@ var ParkOverviewMain = function ParkOverviewMain(_ref) {
 
 var styles = {
     headerContentStyle: {
-        flexDirection: 'column',
-        justifyContent: 'space-around'
+        flexDirection: "column",
+        justifyContent: "space-around",
+        fontSize: 16
     },
     headerTextStyle: {
+        flexDirection: "column",
+        justifyContent: "space-around",
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: "bold"
     },
     subHeaderTextStyle: {
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: "bold"
+    },
+    subHeaderTitleContainerStyle: {
+        marginTop: 0,
+        marginBottom: -14
+    },
+    descriptionContainerStyle: {
+        marginTop: 20,
+        flex: 0
+    },
+    buttonTextStyle: {
+        flexDirection: "column",
+        justifyContent: "space-around",
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "white"
+    },
+    checkInButtonStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 20
+    },
+    urlButtonStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 20,
+        marginBottom: 20
     }
 };
 
