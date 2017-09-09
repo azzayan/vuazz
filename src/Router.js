@@ -3,6 +3,7 @@ import {Router, Scene} from "react-native-router-flux";
 import LoginForm from "./components/LoginForm";
 import ParkList from "./components/ParkList";
 import ParkOverviewMain from "./components/ParkOverviewMain";
+import ParkCheckIn from "./components/ParkCheckIn";
 
 const RouterComponent = () => {
     const {routerStyle} = styles;
@@ -16,6 +17,7 @@ const RouterComponent = () => {
             <Scene key="main">
                 <Scene key="parkList" component={ParkList} title="National Park Units"/>
                 <Scene key="parkOverview" component={ParkOverviewMain} title="Park Overview"/>
+                <Scene key="parkCheckIn" component={ParkCheckIn} title="Check In to Park!"/>
             </Scene>
         </Router>
     );

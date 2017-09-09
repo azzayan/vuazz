@@ -28,6 +28,7 @@
     "react-native": "0.42.3",
     "react-native-communications": "^2.2.1",
     "react-native-hyperlink": "0.0.11",
+    "react-native-multi-slider": "^0.3.6",
     "react-native-router-flux": "^3.35.0",
     "react-native-search-filter": "^0.1.1",
     "react-native-vector-icons": "^4.1.1",

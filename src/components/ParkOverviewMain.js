@@ -1,9 +1,11 @@
 import React from "react";
 import {Text} from "react-native";
 import {Body, Button, Card, CardItem, Container, Content} from "native-base";
+import {Actions} from "react-native-router-flux";
 
 const ParkOverviewMain = ({park}) => {
     const {
+        fullName,
         name,
         designation,
         description,
@@ -33,7 +35,7 @@ const ParkOverviewMain = ({park}) => {
                 </Body>
 
                 {/*check in button*/}
-                <Button block success style={checkInButtonStyle}>
+                <Button block success style={checkInButtonStyle} onPress={() => Actions.parkCheckIn({park})}>
                     <Text style={buttonTextStyle}>
                         CHECK IN!
                     </Text>
