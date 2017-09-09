@@ -4,7 +4,8 @@ import {Body, Button, Card, CardItem, Container, Content} from "native-base";
 
 const ParkOverviewMain = ({park}) => {
     const {
-        fullName,
+        name,
+        designation,
         description,
         states,
         url,
@@ -22,12 +23,12 @@ const ParkOverviewMain = ({park}) => {
     } = styles;
 
     return (
-
         <Container>
             <Content>
                 {/* intro */}
                 <Body>
-                <Text style={headerTextStyle}>{fullName}</Text>
+                <Text style={headerTextStyle}>{name}</Text>
+                <Text style={headerContentStyle}>{designation}</Text>
                 <Text style={headerContentStyle}>State(s): {states}</Text>
                 </Body>
 
@@ -73,7 +74,7 @@ const styles = {
     headerContentStyle: {
         flexDirection: "column",
         justifyContent: "space-around",
-        fontSize: 16
+        fontSize: 14
     },
     headerTextStyle: {
         fontSize: 18,
