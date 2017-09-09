@@ -19,6 +19,6 @@
     "hideExponentText": "true"
   },
   "android": {
-    "permissions": ["CAMERA", "READ_CONTACTS", "VIBRATE"]
+    "permissions": ["CAMERA", "READ_CONTACTS", "VIBRATE", "ACCESS_FINE_LOCATION"]
   }
 }
