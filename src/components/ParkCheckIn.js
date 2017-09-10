@@ -2,6 +2,7 @@ import React from "react";
 import {Text} from "react-native";
 import {Body, Card, CardItem, Container, Content, Form, Input, Item} from "native-base";
 import MultiSlider from "react-native-multi-slider";
+import FooterBar from "./FooterBar";
 
 const ParkCheckIn = ({park}) => {
     const {

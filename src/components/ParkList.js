@@ -4,6 +4,7 @@ import {Container, Content, Icon, Item} from "native-base";
 import SearchInput, {createFilter} from "react-native-search-filter";
 import {Actions} from "react-native-router-flux";
 import ParkListItem from "./ParkListItem";
+import FooterBar from "./FooterBar";
 
 const KEYS_TO_FILTERS = ["fullName"];   // used for searching
 const styles = {
@@ -55,7 +56,8 @@ export default class ParkList extends Component {
     renderParks() {
         return this.state.filteredParks.map(park => {
             return (
-                <TouchableOpacity key={park.id} park={park}
+                <TouchableOpacity key={park.id}
+                                  park={park}
                                   onPress={() => Actions.parkOverview({park})}>
                     <ParkListItem key={park.id} park={park}/>
                 </TouchableOpacity>
@@ -72,14 +74,18 @@ export default class ParkList extends Component {
                 {/*search bar*/}
                 <Item>
                     <Icon name="ios-search"/>
-                    <SearchInput style={searchBoxStyle} placeholder="Search..." onChangeText={(term) => {
-                        this.searchUpdated(term)
-                    }}/>
+                    <SearchInput style={searchBoxStyle}
+                                 placeholder="Search..."
+                                 onChangeText={(term) => {
+                                     this.searchUpdated(term)
+                                 }}
+                    />
                 </Item>
                 {/*list of parks*/}
                 <Content>
                     {this.renderParks()}
                 </Content>
+                <FooterBar/>
             </Container>
         );
     }

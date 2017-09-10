@@ -2,6 +2,7 @@ import React from "react";
 import {Text} from "react-native";
 import {Body, Button, Card, CardItem, Container, Content} from "native-base";
 import {Actions} from "react-native-router-flux";
+import FooterBar from "./FooterBar";
 
 const ParkOverviewMain = ({park}) => {
     const {
@@ -68,6 +69,7 @@ const ParkOverviewMain = ({park}) => {
                     </Text>
                 </Button>
             </Content>
+            <FooterBar/>
         </Container>
     );
 };
