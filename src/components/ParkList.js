@@ -9,9 +9,9 @@ import FooterBar from "./FooterBar";
 const KEYS_TO_FILTERS = ["fullName"];   // used for searching
 const styles = {
     searchBoxStyle: {
+        margin: 12,
         flex: 1,
         justifyContent: 'flex-start',
-        margin: 10
     },
     headerTextStyle: {
         fontSize: 16,
@@ -73,7 +73,7 @@ export default class ParkList extends Component {
             <Container>
                 {/*search bar*/}
                 <Item>
-                    <Icon name="ios-search"/>
+                    <Icon style={{marginLeft: 15}} name="md-search"/>
                     <SearchInput style={searchBoxStyle}
                                  placeholder="Search..."
                                  onChangeText={(term) => {

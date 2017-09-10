@@ -31,7 +31,7 @@ const ParkOverviewMain = ({park}) => {
                 <Body>
                 <Text style={headerTextStyle}>{name}</Text>
                 <Text style={headerContentStyle}>{designation}</Text>
-                <Text style={headerContentStyle}>State(s): {states}</Text>
+                <Text style={headerContentStyle}>Location: {states}</Text>
                 </Body>
 
                 {/*check in button*/}
