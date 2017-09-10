@@ -1,7 +1,7 @@
 import React from "react";
 import {Text} from "react-native";
 import {Body, Card, CardItem, Container, Content} from "native-base";
-import Stars from "react-native-stars-rating";
+import ParkCheckInRating from "./ParkCheckInRating";
 import ParkCheckInReview from "./ParkCheckInReview";
 import ParkCheckInDatePicker from "./ParkCheckInDatePicker";
 
@@ -47,14 +47,7 @@ const ParkCheckIn = ({park}) => {
                         <Text style={subHeaderTextStyle}>Rate this park!</Text>
                     </CardItem>
                     <CardItem style={ratingSliderStyle}>
-                        <Stars
-                            isActive={true}
-                            rateMax={5}
-                            isHalfStarEnabled={true}
-                            onStarPress={(rating) => console.log(rating)}
-                            rate={0}
-                            size={55}
-                        />
+                        <ParkCheckInRating />
                     </CardItem>
                 </Card>
 

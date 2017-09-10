@@ -75,7 +75,7 @@ export default class ParkList extends Component {
                 <Item>
                     <Icon style={{marginLeft: 15}} name="md-search"/>
                     <SearchInput style={searchBoxStyle}
-                                 placeholder="Search..."
+                                 placeholder="Search for a park..."
                                  onChangeText={(term) => {
                                      this.searchUpdated(term)
                                  }}
