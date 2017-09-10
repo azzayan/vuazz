@@ -1,7 +1,9 @@
 import React from "react";
 import {Text} from "react-native";
-import {Body, Card, CardItem, Container, Content, Form, Input, Item} from "native-base";
+import {Body, Card, CardItem, Container, Content} from "native-base";
 import Stars from "react-native-stars-rating";
+import ParkCheckInReview from "./ParkCheckInReview";
+import ParkCheckInDatePicker from "./ParkCheckInDatePicker";
 
 const ParkCheckIn = ({park}) => {
     const {
@@ -15,18 +17,29 @@ const ParkCheckIn = ({park}) => {
         subHeaderTextStyle,
         subHeaderTitleContainerStyle,
         descriptionContainerStyle,
-        ratingSliderStyle
+        ratingSliderStyle,
+        calendarContainerStyle
     } = styles;
 
     return (
         <Container>
             <Content>
-                {/* intro */}
+                {/* park intro */}
                 <Body>
                 <Text style={headerTextStyle}>{name}</Text>
                 <Text style={headerContentStyle}>{designation}</Text>
                 <Text style={headerContentStyle}>State(s): {states}</Text>
                 </Body>
+
+                {/*dates the user visited the park*/}
+                <Card style={calendarContainerStyle}>
+                    <CardItem style={subHeaderTitleContainerStyle}>
+                        <Text style={subHeaderTextStyle}>Dates visited</Text>
+                    </CardItem>
+                    <CardItem>
+                        <ParkCheckInDatePicker />
+                    </CardItem>
+                </Card>
 
                 {/*user rating*/}
                 <Card style={descriptionContainerStyle}>
@@ -39,25 +52,20 @@ const ParkCheckIn = ({park}) => {
                             rateMax={5}
                             isHalfStarEnabled={true}
                             onStarPress={(rating) => console.log(rating)}
-                            rate={1}
+                            rate={0}
                             size={55}
                         />
                     </CardItem>
                 </Card>
 
-                {/*user review of park*/}
+                {/*user review*/}
                 <Card style={descriptionContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
                         <Text style={subHeaderTextStyle}>Review</Text>
                     </CardItem>
-                    <Form>
-                        <Item>
-                            <Input placeholder="Tell your friends about your experience!"
-                                   multiline={true}
-                                   maxLength={1000}
-                            />
-                        </Item>
-                    </Form>
+                    <CardItem>
+                        <ParkCheckInReview />
+                    </CardItem>
                 </Card>
             </Content>
         </Container>
@@ -75,7 +83,7 @@ const styles = {
         fontWeight: "bold"
     },
     subHeaderTextStyle: {
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: "bold",
     },
     subHeaderTitleContainerStyle: {
@@ -91,6 +99,9 @@ const styles = {
         flex: 1,
         marginLeft: 25,
         marginRight: 25,
+    },
+    calendarContainerStyle: {
+        flex: 1
     }
 };
 
