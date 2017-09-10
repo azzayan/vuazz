@@ -1,8 +1,7 @@
 import React from "react";
 import {Text} from "react-native";
 import {Body, Card, CardItem, Container, Content, Form, Input, Item} from "native-base";
-import MultiSlider from "react-native-multi-slider";
-import FooterBar from "./FooterBar";
+import Stars from "react-native-stars-rating";
 
 const ParkCheckIn = ({park}) => {
     const {
@@ -35,13 +34,13 @@ const ParkCheckIn = ({park}) => {
                         <Text style={subHeaderTextStyle}>Rate this park!</Text>
                     </CardItem>
                     <CardItem style={ratingSliderStyle}>
-                        <MultiSlider
-                            sliderLength={280}
-                            min={0}
-                            max={5}
-                            step={0.25}
-                            allowOverlap
-                            snapped
+                        <Stars
+                            isActive={true}
+                            rateMax={5}
+                            isHalfStarEnabled={true}
+                            onStarPress={(rating) => console.log(rating)}
+                            rate={1}
+                            size={55}
                         />
                     </CardItem>
                 </Card>
@@ -84,13 +83,14 @@ const styles = {
     },
     descriptionContainerStyle: {
         marginTop: 20,
-        flex: 0
+        marginRight: 10,
+        marginLeft: 10,
+        flex: 1
     },
     ratingSliderStyle: {
         flex: 1,
         marginLeft: 25,
         marginRight: 25,
-        marginTop: 20
     }
 };
 

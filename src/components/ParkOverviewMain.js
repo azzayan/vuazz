@@ -6,7 +6,6 @@ import FooterBar from "./FooterBar";
 
 const ParkOverviewMain = ({park}) => {
     const {
-        fullName,
         name,
         designation,
         description,
@@ -53,7 +52,7 @@ const ParkOverviewMain = ({park}) => {
                 </Card>
 
                 {/* weather info */}
-                <Card style={{flex: 0}}>
+                <Card style={{flex: 1, marginRight: 10, marginLeft: 10}}>
                     <CardItem style={subHeaderTitleContainerStyle}>
                         <Text style={subHeaderTextStyle}>Weather</Text>
                     </CardItem>
@@ -94,7 +93,9 @@ const styles = {
     },
     descriptionContainerStyle: {
         marginTop: 20,
-        flex: 0
+        marginRight: 10,
+        marginLeft: 10,
+        flex: 1
     },
     buttonTextStyle: {
         flexDirection: "column",

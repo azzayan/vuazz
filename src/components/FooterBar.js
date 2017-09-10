@@ -5,10 +5,10 @@ import {Actions} from "react-native-router-flux";
 
 export default class FooterBar extends Component {
     render() {
-        const {textStyle} = styles;
+        const {textStyle, footerStyle} = styles;
 
         return (
-            <Footer>
+            <Footer style={footerStyle}>
                 <FooterTab>
                     <Button vertical onPress={() => Actions.activityFeed()}>
                         <Icon name="md-paper"/>
@@ -35,5 +35,9 @@ export default class FooterBar extends Component {
 const styles = {
     textStyle: {
         color: "#fff"
+    },
+    footerStyle: {
+        borderWidth: 0.75,
+        borderColor: "#000"
     }
 };
