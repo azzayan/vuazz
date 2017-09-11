@@ -28,7 +28,7 @@ const ParkCheckIn = ({park}) => {
                 <Body>
                 <Text style={headerTextStyle}>{name}</Text>
                 <Text style={headerContentStyle}>{designation}</Text>
-                <Text style={headerContentStyle}>State(s): {states}</Text>
+                <Text style={headerContentStyle}>Location: {states}</Text>
                 </Body>
 
                 {/*dates the user visited the park*/}
