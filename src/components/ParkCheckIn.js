@@ -17,8 +17,7 @@ const ParkCheckIn = ({park}) => {
         subHeaderTextStyle,
         subHeaderTitleContainerStyle,
         descriptionContainerStyle,
-        ratingSliderStyle,
-        calendarContainerStyle
+        ratingSliderStyle
     } = styles;
 
     return (
@@ -32,14 +31,7 @@ const ParkCheckIn = ({park}) => {
                 </Body>
 
                 {/*dates the user visited the park*/}
-                <Card style={calendarContainerStyle}>
-                    <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>Dates visited</Text>
-                    </CardItem>
-                    <CardItem>
-                        <ParkCheckInDatePicker />
-                    </CardItem>
-                </Card>
+                <ParkCheckInDatePicker />
 
                 {/*user rating*/}
                 <Card style={descriptionContainerStyle}>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {Text, View} from "react-native";
+import {Text} from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
-import {CardItem} from "native-base";
+import {Card, CardItem} from "native-base";
 
 export default class ParkCheckInDatePicker extends Component {
     constructor(props) {
@@ -39,24 +39,55 @@ export default class ParkCheckInDatePicker extends Component {
         const endDate = selectedEndDate ? `${days[selectedEndDate.getDay()]},  ${months[selectedEndDate.getMonth()]} ${selectedEndDate.getDate()}, ${selectedEndDate.getFullYear()}`.toString() : "";
 
         return (
-            <View>
-                <CalendarPicker
-                    allowRangeSelection={true}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    todayBackgroundColor="#e1f3cc"
-                    selectedDayColor="#6AC700"
-                    selectedDayTextColor="#FFFFFF"
-                    onDateChange={this.onDateChange}
-                />
-                <CardItem>
-                    <Text style={{fontWeight: "bold"}}>Start Date: </Text><Text>{startDate}</Text>
+            <Card style={calendarContainerStyle}>
+                <CardItem style={subHeaderTitleContainerStyle}>
+                    <Text style={subHeaderTextStyle}>Dates visited</Text>
                 </CardItem>
                 <CardItem>
-                    <Text style={{fontWeight: "bold"}}>End Date: </Text><Text>{endDate}</Text>
+                    <CalendarPicker
+                        allowRangeSelection={true}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        todayBackgroundColor="#D2EEB2"
+                        selectedDayColor="#6AC700"
+                        selectedDayTextColor="#FFFFFF"
+                        onDateChange={this.onDateChange}
+                    />
                 </CardItem>
-            </View>
-
+                <CardItem style={startDateContainerStyle}>
+                    <Text style={startAndEndDateTextStyle}>Start Date: </Text><Text>{startDate}</Text>
+                </CardItem>
+                <CardItem>
+                    <Text style={startAndEndDateTextStyle}>End Date: </Text><Text>{endDate}</Text>
+                </CardItem>
+            </Card>
         );
     }
 }
+
+const styles = {
+    subHeaderTextStyle: {
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+    subHeaderTitleContainerStyle: {
+        marginTop: 0,
+    },
+    calendarContainerStyle: {
+        flex: 1
+    },
+    startDateContainerStyle: {
+        marginBottom: -12
+    },
+    startAndEndDateTextStyle: {
+        fontWeight: "bold"
+    }
+};
+
+const {
+    subHeaderTextStyle,
+    subHeaderTitleContainerStyle,
+    calendarContainerStyle,
+    startDateContainerStyle,
+    startAndEndDateTextStyle
+} = styles;
