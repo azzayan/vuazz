@@ -34,14 +34,7 @@ const ParkCheckIn = ({park}) => {
                 <ParkCheckInDatePicker />
 
                 {/*user rating*/}
-                <Card style={descriptionContainerStyle}>
-                    <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>Rate this park!</Text>
-                    </CardItem>
-                    <CardItem style={ratingSliderStyle}>
-                        <ParkCheckInRating />
-                    </CardItem>
-                </Card>
+                <ParkCheckInRating />
 
                 {/*user review*/}
                 <Card style={descriptionContainerStyle}>
@@ -84,9 +77,6 @@ const styles = {
         flex: 1,
         marginLeft: 25,
         marginRight: 25,
-    },
-    calendarContainerStyle: {
-        flex: 1
     }
 };
 

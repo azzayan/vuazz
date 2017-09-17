@@ -1,17 +1,54 @@
 import React, {Component} from "react";
 import Stars from "react-native-stars-rating";
+import {Card, CardItem} from "native-base";
+import {Text} from "react-native";
 
 export default class ParkCheckInRating extends Component {
     render() {
         return (
-            <Stars
-                isActive={true}
-                rateMax={5}
-                isHalfStarEnabled={true}
-                onStarPress={(rating) => console.log(rating)}
-                rate={0}
-                size={55}
-            />
+            <Card style={descriptionContainerStyle}>
+                <CardItem style={subHeaderTitleContainerStyle}>
+                    <Text style={subHeaderTextStyle}>Rate this park!</Text>
+                </CardItem>
+                <CardItem style={ratingSliderStyle}>
+                    <Stars
+                        isActive={true}
+                        rateMax={5}
+                        isHalfStarEnabled={true}
+                        onStarPress={(rating) => console.log(rating)}
+                        rate={0}
+                        size={55}
+                    />
+                </CardItem>
+            </Card>
         )
     }
 }
+
+const styles = {
+    subHeaderTextStyle: {
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+    subHeaderTitleContainerStyle: {
+        marginTop: 0,
+    },
+    descriptionContainerStyle: {
+        marginTop: 20,
+        marginRight: 10,
+        marginLeft: 10,
+        flex: 1
+    },
+    ratingSliderStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+    }
+};
+
+const {
+    subHeaderTextStyle,
+    subHeaderTitleContainerStyle,
+    descriptionContainerStyle,
+    ratingSliderStyle
+} = styles;

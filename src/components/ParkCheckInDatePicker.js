@@ -41,7 +41,7 @@ export default class ParkCheckInDatePicker extends Component {
         return (
             <Card style={calendarContainerStyle}>
                 <CardItem style={subHeaderTitleContainerStyle}>
-                    <Text style={subHeaderTextStyle}>Dates visited</Text>
+                    <Text style={subHeaderTextStyle}>Date(s) visited</Text>
                 </CardItem>
                 <CardItem>
                     <CalendarPicker
