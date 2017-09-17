@@ -35,7 +35,7 @@ const ParkOverviewMain = ({park}) => {
                 </Body>
 
                 {/*check in button*/}
-                <Button block success style={checkInButtonStyle} onPress={() => Actions.parkCheckIn({park})}>
+                <Button block success style={checkInButtonStyle} onPress={() => Actions.parkCheckInMain({park})}>
                     <Text style={buttonTextStyle}>
                         CHECK IN!
                     </Text>

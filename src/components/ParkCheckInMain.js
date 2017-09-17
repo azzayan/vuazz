@@ -1,24 +1,16 @@
 import React from "react";
 import {Text} from "react-native";
-import {Body, Card, CardItem, Container, Content} from "native-base";
+import {Body, Container, Content} from "native-base";
 import ParkCheckInRating from "./ParkCheckInRating";
 import ParkCheckInReview from "./ParkCheckInReview";
 import ParkCheckInDatePicker from "./ParkCheckInDatePicker";
 
-const ParkCheckIn = ({park}) => {
+const ParkCheckInMain = ({park}) => {
     const {
         name,
         designation,
         states
     } = park;
-    const {
-        headerContentStyle,
-        headerTextStyle,
-        subHeaderTextStyle,
-        subHeaderTitleContainerStyle,
-        descriptionContainerStyle,
-        ratingSliderStyle
-    } = styles;
 
     return (
         <Container>
@@ -37,14 +29,7 @@ const ParkCheckIn = ({park}) => {
                 <ParkCheckInRating />
 
                 {/*user review*/}
-                <Card style={descriptionContainerStyle}>
-                    <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>Review</Text>
-                    </CardItem>
-                    <CardItem>
-                        <ParkCheckInReview />
-                    </CardItem>
-                </Card>
+                <ParkCheckInReview />
             </Content>
         </Container>
     );
@@ -59,25 +44,12 @@ const styles = {
     headerTextStyle: {
         fontSize: 18,
         fontWeight: "bold"
-    },
-    subHeaderTextStyle: {
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-    subHeaderTitleContainerStyle: {
-        marginTop: 0,
-    },
-    descriptionContainerStyle: {
-        marginTop: 20,
-        marginRight: 10,
-        marginLeft: 10,
-        flex: 1
-    },
-    ratingSliderStyle: {
-        flex: 1,
-        marginLeft: 25,
-        marginRight: 25,
     }
 };
 
-export default ParkCheckIn;
+const {
+    headerContentStyle,
+    headerTextStyle
+} = styles;
+
+export default ParkCheckInMain;
