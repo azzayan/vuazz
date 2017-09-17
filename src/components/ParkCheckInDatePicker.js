@@ -44,8 +44,8 @@ export default class ParkCheckInDatePicker extends Component {
                     allowRangeSelection={true}
                     minDate={minDate}
                     maxDate={maxDate}
-                    todayBackgroundColor="#f2e6ff"
-                    selectedDayColor="#7300e6"
+                    todayBackgroundColor="#e1f3cc"
+                    selectedDayColor="#6AC700"
                     selectedDayTextColor="#FFFFFF"
                     onDateChange={this.onDateChange}
                 />
