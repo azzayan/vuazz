@@ -17,7 +17,7 @@ class ParkCheckInCreate extends Component {
                 <ParkCheckInMain {...this.props} />
                 <CardItem>
                     <Button onPress={this.onButtonPress.bind(this)}>
-                        Create
+                        Check in!
                     </Button>
                 </CardItem>
             </Card>

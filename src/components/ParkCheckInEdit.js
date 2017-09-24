@@ -1,13 +1,11 @@
 import _ from "lodash";
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import ParkCheckInMain from "./ParkCheckInMain";
+import ParkCheckInForm from "./ParkCheckInForm";
 import {parkCheckInDelete, parkCheckInSave, parkCheckInUpdate} from "../actions";
-import {Button, Card, CardItem} from "native-base";
+import {Button, Container, Content} from "native-base";
 
 class ParkCheckInEdit extends Component {
-    state = {showModal: false};
-
     componentWillMount() {
         _.each(this.props.park, (value, prop) => {
             this.props.parkCheckInUpdate({prop, value});
@@ -22,21 +20,19 @@ class ParkCheckInEdit extends Component {
 
     render() {
         return (
-            <Card>
-                <ParkCheckInMain />
+            <Container>
+                <Content>
+                    <ParkCheckInForm />
 
-                <CardItem>
                     <Button onPress={this.onButtonPress.bind(this)}>
                         Save changes
                     </Button>
-                </CardItem>
 
-                <CardItem>
                     <Button>
                         Delete check-in
                     </Button>
-                </CardItem>
-            </Card>
+                </Content>
+            </Container>
         );
     }
 }

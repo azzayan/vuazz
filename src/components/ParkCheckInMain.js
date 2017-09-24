@@ -1,9 +1,7 @@
 import React from "react";
 import {Image, Text} from "react-native";
 import {Body, Container, Content} from "native-base";
-import ParkCheckInDatePicker from "./ParkCheckInDatePicker";
-import ParkCheckInRating from "./ParkCheckInRating";
-import ParkCheckInReview from "./ParkCheckInReview";
+import ParkCheckInForm from "./ParkCheckInForm";
 
 const ParkCheckInMain = ({park}) => {
     const {
@@ -27,9 +25,7 @@ const ParkCheckInMain = ({park}) => {
                 <Image source={require(`../../assets/images/parks/arrowhead.png`)}/>
                 </Body>
 
-                <ParkCheckInRating />
-                <ParkCheckInReview />
-                <ParkCheckInDatePicker />
+                <ParkCheckInForm />
             </Content>
         </Container>
 
