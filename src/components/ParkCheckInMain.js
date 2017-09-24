@@ -27,9 +27,9 @@ const ParkCheckInMain = ({park}) => {
                 <Image source={require(`../../assets/images/parks/arrowhead.png`)}/>
                 </Body>
 
-                <ParkCheckInDatePicker />
                 <ParkCheckInRating />
                 <ParkCheckInReview />
+                <ParkCheckInDatePicker />
             </Content>
         </Container>
 
@@ -41,7 +41,7 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
         marginTop: 10,
-        marginBottom: 25
+        marginBottom: 20
     },
     headerContentStyle: {
         flexDirection: "column",

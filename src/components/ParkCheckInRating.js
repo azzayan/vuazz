@@ -34,7 +34,6 @@ const styles = {
         marginTop: 0,
     },
     descriptionContainerStyle: {
-        marginTop: 20,
         marginRight: 10,
         marginLeft: 10,
         flex: 1
