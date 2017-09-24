@@ -1,5 +1,5 @@
 import React from "react";
-import {Text} from "react-native";
+import {Image, Text} from "react-native";
 import {Body, Button, Card, CardItem, Container, Content} from "native-base";
 import {Actions} from "react-native-router-flux";
 import FooterBar from "./FooterBar";
@@ -8,30 +8,24 @@ const ParkOverviewMain = ({park}) => {
     const {
         name,
         designation,
-        description,
         states,
-        url,
+        description,
         weatherInfo
     } = park;
-    const {
-        headerContentStyle,
-        headerTextStyle,
-        subHeaderTextStyle,
-        subHeaderTitleContainerStyle,
-        descriptionContainerStyle,
-        checkInButtonStyle,
-        urlButtonStyle,
-        buttonTextStyle
-    } = styles;
 
     return (
         <Container>
             <Content>
                 {/* intro */}
-                <Body>
+                <Body style={containerStyle}>
                 <Text style={headerTextStyle}>{name}</Text>
                 <Text style={headerContentStyle}>{designation}</Text>
                 <Text style={headerContentStyle}>Location: {states}</Text>
+                </Body>
+
+                {/*park image*/}
+                <Body style={containerStyle}>
+                <Image source={require(`../../assets/images/parks/arrowhead.png`)}/>
                 </Body>
 
                 {/*check in button*/}
@@ -74,6 +68,12 @@ const ParkOverviewMain = ({park}) => {
 };
 
 const styles = {
+    containerStyle: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 10,
+        marginBottom: 10
+    },
     headerContentStyle: {
         flexDirection: "column",
         justifyContent: "space-around",
@@ -118,5 +118,17 @@ const styles = {
         marginBottom: 20
     }
 };
+
+const {
+    containerStyle,
+    headerContentStyle,
+    headerTextStyle,
+    subHeaderTextStyle,
+    subHeaderTitleContainerStyle,
+    descriptionContainerStyle,
+    checkInButtonStyle,
+    urlButtonStyle,
+    buttonTextStyle
+} = styles;
 
 export default ParkOverviewMain;
