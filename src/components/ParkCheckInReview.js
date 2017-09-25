@@ -22,7 +22,7 @@ class ParkCheckInReview extends Component {
                         onChangeText={(rating) => this.setState({rating})}
                         style={textInput}
                         multiline={true}
-                        numberOfLines={10}
+                        numberOfLines={5}
                         maxLength={1000}
                     />
                 </CardItem>

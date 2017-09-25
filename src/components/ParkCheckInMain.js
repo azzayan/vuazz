@@ -1,6 +1,6 @@
 import React from "react";
 import {Image, Text} from "react-native";
-import {Body, Container, Content} from "native-base";
+import {Body, Container, Content, Button} from "native-base";
 import ParkCheckInForm from "./ParkCheckInForm";
 
 const ParkCheckInMain = ({park}) => {
@@ -26,6 +26,13 @@ const ParkCheckInMain = ({park}) => {
                 </Body>
 
                 <ParkCheckInForm />
+
+                {/*submit button*/}
+                <Button block success style={checkInButtonStyle}>
+                    <Text style={buttonTextStyle}>
+                        SUBMIT!
+                    </Text>
+                </Button>
             </Content>
         </Container>
 
@@ -47,13 +54,29 @@ const styles = {
     headerTextStyle: {
         fontSize: 18,
         fontWeight: "bold"
+    },
+    buttonTextStyle: {
+        flexDirection: "column",
+        justifyContent: "space-around",
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "white"
+    },
+    checkInButtonStyle: {
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 20,
+        marginBottom: 20
     }
 };
 
 const {
     containerStyle,
     headerContentStyle,
-    headerTextStyle
+    headerTextStyle,
+    buttonTextStyle,
+    checkInButtonStyle
 } = styles;
 
 export default ParkCheckInMain;
