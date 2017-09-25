@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import {Text} from "react-native";
+import {connect} from "react-redux";
+import {parkCheckInUpdate} from "../actions";
 import CalendarPicker from "react-native-calendar-picker";
 import {Card, CardItem} from "native-base";
 
-export default class ParkCheckInDatePicker extends Component {
+class ParkCheckInDatePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,10 +57,10 @@ export default class ParkCheckInDatePicker extends Component {
                     />
                 </CardItem>
                 <CardItem style={startDateContainerStyle}>
-                    <Text style={startAndEndDateTextStyle}>Start Date: </Text><Text>{startDate}</Text>
+                    <Text style={startAndEndDateTextStyle}>Start date: </Text><Text>{startDate}</Text>
                 </CardItem>
                 <CardItem>
-                    <Text style={startAndEndDateTextStyle}>End Date: </Text><Text>{endDate}</Text>
+                    <Text style={startAndEndDateTextStyle}>End date:   </Text><Text>{endDate}</Text>
                 </CardItem>
             </Card>
         );
@@ -91,3 +93,11 @@ const {
     startDateContainerStyle,
     startAndEndDateTextStyle
 } = styles;
+
+const mapStateToProps = (state) => {
+    const {startDate, endDate} = state.parkCheckInForm;
+
+    return {startDate, endDate};
+};
+
+export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInDatePicker);

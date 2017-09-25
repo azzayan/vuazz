@@ -2,8 +2,11 @@ import React, {Component} from "react";
 import Stars from "react-native-stars-rating";
 import {Card, CardItem} from "native-base";
 import {Text} from "react-native";
+import {connect} from "react-redux";
+import {parkCheckInUpdate} from "../actions";
 
-export default class ParkCheckInRating extends Component {
+
+class ParkCheckInRating extends Component {
     render() {
         return (
             <Card style={descriptionContainerStyle}>
@@ -51,3 +54,11 @@ const {
     descriptionContainerStyle,
     ratingSliderStyle
 } = styles;
+
+const mapStateToProps = (state) => {
+    const {rating} = state.parkCheckInForm;
+
+    return {rating};
+};
+
+export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInRating);

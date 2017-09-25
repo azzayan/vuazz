@@ -1,12 +1,13 @@
 import React, {Component} from "react";
-import {AutoGrowingTextInput} from "react-native-autogrow-textinput";
-import {Text} from "react-native";
+import {Text, TextInput} from "react-native";
 import {Card, CardItem} from "native-base";
+import {connect} from "react-redux";
+import {parkCheckInUpdate} from "../actions";
 
-export default  class ParkCheckInReview extends Component {
+class ParkCheckInReview extends Component {
     constructor(props) {
         super(props);
-        this.state = {textValue: ""};
+        this.state = {rating: ""};
     }
 
     render() {
@@ -16,30 +17,17 @@ export default  class ParkCheckInReview extends Component {
                     <Text style={subHeaderTextStyle}>Review</Text>
                 </CardItem>
                 <CardItem>
-                    <AutoGrowingTextInput
-                        value={this.state.textValue}
-                        onChange={(event) => this._onChange(event)}
+                    <TextInput
+                        value={this.state.rating}
+                        onChangeText={(rating) => this.setState({rating})}
                         style={textInput}
-                        placeholder={"Tell your friends about your experience!"}
-                        maxHeight={200}
-                        minHeight={70}
-                        ref={(r) => {
-                            this._textInput = r;
-                        }}
+                        multiline={true}
+                        numberOfLines={10}
+                        maxLength={1000}
                     />
                 </CardItem>
             </Card>
-
         );
-    }
-
-    _onChange(event) {
-        this.setState({textValue: event.nativeEvent.text || ""});
-    }
-
-    _resetTextInput() {
-        this._textInput.clear();
-        this._textInput.resetHeightToMin();
     }
 }
 
@@ -69,3 +57,11 @@ const {
     subHeaderTitleContainerStyle,
     descriptionContainerStyle
 } = styles;
+
+const mapStateToProps = (state) => {
+    const {rating} = state.parkCheckInForm;
+
+    return {rating};
+};
+
+export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInReview);
