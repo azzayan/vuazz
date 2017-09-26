@@ -7,6 +7,19 @@ import {parkCheckInUpdate} from "../actions";
 
 
 class ParkCheckInRating extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {rating: 1};
+
+        this.onRatingChange = this.onRatingChange.bind(this);
+    }
+
+    onRatingChange(rating) {
+        this.setState({
+            rating: rating
+        });
+    }
+
     render() {
         return (
             <Card style={descriptionContainerStyle}>
@@ -18,7 +31,7 @@ class ParkCheckInRating extends Component {
                         isActive={true}
                         rateMax={5}
                         isHalfStarEnabled={true}
-                        onStarPress={(rating) => console.log(rating)}
+                        onStarPress={this.onRatingChange}
                         rate={0}
                         size={55}
                     />
