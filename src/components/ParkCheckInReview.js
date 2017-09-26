@@ -7,7 +7,15 @@ import {parkCheckInUpdate} from "../actions";
 class ParkCheckInReview extends Component {
     constructor(props) {
         super(props);
-        this.state = {rating: ""};
+        this.state = {review: ""};
+
+        this.onReviewChange = this.onReviewChange.bind(this);
+    }
+
+    onReviewChange(review) {
+        this.setState({
+            review: review
+        });
     }
 
     render() {
@@ -18,8 +26,8 @@ class ParkCheckInReview extends Component {
                 </CardItem>
                 <CardItem>
                     <TextInput
-                        value={this.state.rating}
-                        onChangeText={(rating) => this.setState({rating})}
+                        value={this.state.review}
+                        onChangeText={this.onReviewChange}
                         style={textInput}
                         multiline={true}
                         numberOfLines={5}
@@ -59,9 +67,9 @@ const {
 } = styles;
 
 const mapStateToProps = (state) => {
-    const {rating} = state.parkCheckInForm;
+    const {review} = state.parkCheckInForm;
 
-    return {rating};
+    return {review};
 };
 
 export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInReview);
