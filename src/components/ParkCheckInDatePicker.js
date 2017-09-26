@@ -50,8 +50,8 @@ class ParkCheckInDatePicker extends Component {
                         allowRangeSelection={true}
                         minDate={minDate}
                         maxDate={maxDate}
-                        todayBackgroundColor="#D2EEB2"
-                        selectedDayColor="#6AC700"
+                        selectedDayColor="#1984C4"
+                        todayBackgroundColor="#BADAED"
                         selectedDayTextColor="#FFFFFF"
                         onDateChange={this.onDateChange}
                     />
