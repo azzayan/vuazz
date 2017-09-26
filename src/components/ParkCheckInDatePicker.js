@@ -79,7 +79,7 @@ const styles = {
         flex: 1
     },
     startDateContainerStyle: {
-        marginBottom: -12
+        marginBottom: -13
     },
     startAndEndDateTextStyle: {
         fontWeight: "bold"
