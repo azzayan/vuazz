@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, Text} from "react-native";
+import {Image, Linking, Text} from "react-native";
 import {Body, Button, Card, CardItem, Container, Content} from "native-base";
 import {Actions} from "react-native-router-flux";
 import FooterBar from "./FooterBar";
@@ -10,7 +10,8 @@ const ParkOverviewMain = ({park}) => {
         designation,
         states,
         description,
-        weatherInfo
+        weatherInfo,
+        url
     } = park;
 
     return (
@@ -56,7 +57,9 @@ const ParkOverviewMain = ({park}) => {
                 </Card>
 
                 {/*link to park's official NPS page*/}
-                <Button block style={urlButtonStyle}>
+                <Button block style={urlButtonStyle} onPress={() => {
+                    Linking.openURL(url).catch(err => console.error(`The NPS page for ${name} don't work`, err));
+                }}>
                     <Text style={buttonTextStyle}>
                         Visit this park's official NPS page
                     </Text>
