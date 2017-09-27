@@ -95,9 +95,9 @@ const {
 } = styles;
 
 const mapStateToProps = (state) => {
-    const {startDate, endDate} = state.parkCheckInForm;
+    const {selectedStartDate, selectedEndDate} = state.parkCheckInForm;
 
-    return {startDate, endDate};
+    return {selectedStartDate, selectedEndDate};
 };
 
 export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInDatePicker);
