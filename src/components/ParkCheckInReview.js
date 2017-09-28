@@ -14,7 +14,7 @@ class ParkCheckInReview extends Component {
                 <CardItem>
                     <TextInput
                         value={this.props.review}
-                        onChangeText={value => this.props.parkCheckInUpdate({ prop: "review", value })}
+                        onChangeText={value => this.props.parkCheckInUpdate({prop: "review", value})}
                         style={textInput}
                         multiline={true}
                         placeholder="Tell your friends about your experience!"
