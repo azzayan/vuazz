@@ -30,6 +30,7 @@ class ParkCheckInReview extends Component {
                         onChangeText={this.onReviewChange}
                         style={textInput}
                         multiline={true}
+                        placeholder="Tell your friends about your experience!"
                         numberOfLines={5}
                         maxLength={1000}
                     />
