@@ -5,19 +5,6 @@ import {connect} from "react-redux";
 import {parkCheckInUpdate} from "../actions";
 
 class ParkCheckInReview extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {review: ""};
-
-        this.onReviewChange = this.onReviewChange.bind(this);
-    }
-
-    onReviewChange(review) {
-        this.setState({
-            review: review
-        });
-    }
-
     render() {
         return (
             <Card style={descriptionContainerStyle}>
@@ -26,8 +13,8 @@ class ParkCheckInReview extends Component {
                 </CardItem>
                 <CardItem>
                     <TextInput
-                        value={this.state.review}
-                        onChangeText={this.onReviewChange}
+                        value={this.props.review}
+                        onChangeText={value => this.props.parkCheckInUpdate({ prop: "review", value })}
                         style={textInput}
                         multiline={true}
                         placeholder="Tell your friends about your experience!"
