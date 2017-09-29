@@ -6,9 +6,9 @@ import ParkCheckInMain from "./ParkCheckInMain";
 
 class ParkCheckInCreate extends Component {
     onButtonPress() {
-        const {selectedStartDate, selectedEndDate, rating, review} = this.props;
+        const {startDate, endDate, rating, review} = this.props;
 
-        this.props.parkCheckInCreate({selectedStartDate, selectedEndDate, rating, review});
+        this.props.parkCheckInCreate({startDate, endDate, rating, review});
     }
 
     render() {

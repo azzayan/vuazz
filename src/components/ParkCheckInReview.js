@@ -7,7 +7,7 @@ import {parkCheckInUpdate} from "../actions";
 class ParkCheckInReview extends Component {
     render() {
         return (
-            <Card style={descriptionContainerStyle}>
+            <Card style={reviewContainerStyle}>
                 <CardItem style={subHeaderTitleContainerStyle}>
                     <Text style={subHeaderTextStyle}>Review</Text>
                 </CardItem>
@@ -41,7 +41,7 @@ const styles = {
     subHeaderTitleContainerStyle: {
         marginTop: 0,
     },
-    descriptionContainerStyle: {
+    reviewContainerStyle: {
         marginRight: 10,
         marginLeft: 10,
         flex: 1
@@ -51,7 +51,7 @@ const {
     textInput,
     subHeaderTextStyle,
     subHeaderTitleContainerStyle,
-    descriptionContainerStyle
+    reviewContainerStyle
 } = styles;
 
 const mapStateToProps = (state) => {

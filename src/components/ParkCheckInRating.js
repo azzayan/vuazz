@@ -9,7 +9,7 @@ import {parkCheckInUpdate} from "../actions";
 class ParkCheckInRating extends Component {
     render() {
         return (
-            <Card style={descriptionContainerStyle}>
+            <Card style={ratingContainerStyle}>
                 <CardItem style={subHeaderTitleContainerStyle}>
                     <Text style={subHeaderTextStyle}>Rate this park!</Text>
                 </CardItem>
@@ -36,7 +36,7 @@ const styles = {
     subHeaderTitleContainerStyle: {
         marginTop: 0,
     },
-    descriptionContainerStyle: {
+    ratingContainerStyle: {
         marginRight: 10,
         marginLeft: 10,
         flex: 1
@@ -51,7 +51,7 @@ const styles = {
 const {
     subHeaderTextStyle,
     subHeaderTitleContainerStyle,
-    descriptionContainerStyle,
+    ratingContainerStyle,
     ratingSliderStyle
 } = styles;
 

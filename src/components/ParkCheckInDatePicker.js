@@ -1,69 +1,80 @@
 import React, {Component} from "react";
-import {Text} from "react-native";
+import {Text, View} from "react-native";
+import DatePicker from "react-native-datepicker";
 import {connect} from "react-redux";
-import {parkCheckInUpdate} from "../actions";
-import CalendarPicker from "react-native-calendar-picker";
 import {Card, CardItem} from "native-base";
+import {parkCheckInUpdate} from "../actions";
 
 class ParkCheckInDatePicker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedStartDate: null,
-            selectedEndDate: null,
-        };
-        this.onDateChange = this.onDateChange.bind(this);
-    }
-
-    onDateChange(date, type) {
-        if (type === "END_DATE") {
-            this.setState({
-                selectedEndDate: date,
-            });
-        } else {
-            this.setState({
-                selectedStartDate: date,
-                selectedEndDate: null,
-            });
-        }
-    }
-
     render() {
-        // used for printing out names of months and dates from Date() object
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        // start and end date stuff
-        const {selectedStartDate, selectedEndDate} = this.state;
-        const minDate = new Date(1916, 8, 25);  // creation of National Park Service
-        const maxDate = new Date(); // today
-        const startDate = selectedStartDate ? `${days[selectedStartDate.getDay()]},  ${months[selectedStartDate.getMonth()]} ${selectedStartDate.getDate()}, ${selectedStartDate.getFullYear()}`.toString() : "";
-        const endDate = selectedEndDate ? `${days[selectedEndDate.getDay()]},  ${months[selectedEndDate.getMonth()]} ${selectedEndDate.getDate()}, ${selectedEndDate.getFullYear()}`.toString() : "";
-
         return (
-            <Card style={calendarContainerStyle}>
+            <Card style={datePickerContainerStyle}>
                 <CardItem style={subHeaderTitleContainerStyle}>
                     <Text style={subHeaderTextStyle}>Date(s) visited</Text>
                 </CardItem>
+
+                {/*date picker for start date*/}
                 <CardItem>
-                    <CalendarPicker
-                        allowRangeSelection={true}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        selectedDayColor="#1984C4"
-                        todayBackgroundColor="#BADAED"
-                        selectedDayTextColor="#FFFFFF"
-                        onDateChange={this.onDateChange}
+                    <View style={startAndEndDateContainerStyle}>
+                        <Text style={startAndEndDateTextStyle}>Start date</Text>
+                    </View>
+                    <DatePicker
+                        style={datePickerStyle}
+                        date={this.props.startDate}
+                        mode="date"
+                        placeholder="select date"
+                        format="YYYY-MM-DD"
+                        minDate={new Date(1916, 8, 25)}
+                        maxDate={new Date()}
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                                position: "absolute",
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 36
+                            }
+                        }}
+                        onDateChange={value => this.props.parkCheckInUpdate({prop: "startDate", value})}
                     />
                 </CardItem>
-                <CardItem style={startDateContainerStyle}>
-                    <Text style={startAndEndDateTextStyle}>Start date: </Text><Text>{startDate}</Text>
-                </CardItem>
+
+                {/*date picker for end date*/}
                 <CardItem>
-                    <Text style={startAndEndDateTextStyle}>End date:   </Text><Text>{endDate}</Text>
+                    <View style={startAndEndDateContainerStyle}>
+                        <Text style={startAndEndDateTextStyle}>End date  </Text>
+                    </View>
+                    <DatePicker
+                        style={datePickerStyle}
+                        date={this.props.endDate}
+                        mode="date"
+                        placeholder="select date"
+                        format="YYYY-MM-DD"
+                        minDate={this.props.startDate}
+                        maxDate={new Date()}
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                                position: "absolute",
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 36
+                            }
+                        }}
+                        disabled={this.props.startDate === ""}
+                        onDateChange={value => this.props.parkCheckInUpdate({prop: "endDate", value})}
+                    />
                 </CardItem>
             </Card>
-        );
+        )
     }
 }
 
@@ -75,29 +86,35 @@ const styles = {
     subHeaderTitleContainerStyle: {
         marginTop: 0,
     },
-    calendarContainerStyle: {
+    datePickerContainerStyle: {
+        marginRight: 10,
+        marginLeft: 10,
         flex: 1
-    },
-    startDateContainerStyle: {
-        marginBottom: -13
     },
     startAndEndDateTextStyle: {
         fontWeight: "bold"
+    },
+    datePickerStyle: {
+        width: 200
+    },
+    startAndEndDateContainerStyle: {
+        marginRight: 15
     }
 };
 
 const {
     subHeaderTextStyle,
     subHeaderTitleContainerStyle,
-    calendarContainerStyle,
-    startDateContainerStyle,
-    startAndEndDateTextStyle
+    datePickerContainerStyle,
+    startAndEndDateTextStyle,
+    datePickerStyle,
+    startAndEndDateContainerStyle
 } = styles;
 
 const mapStateToProps = (state) => {
-    const {selectedStartDate, selectedEndDate} = state.parkCheckInForm;
+    const {startDate, endDate} = state.parkCheckInForm;
 
-    return {selectedStartDate, selectedEndDate};
+    return {startDate, endDate};
 };
 
 export default connect(mapStateToProps, {parkCheckInUpdate})(ParkCheckInDatePicker);
