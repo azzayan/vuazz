@@ -23,7 +23,7 @@ class ParkCheckInDatePicker extends Component {
                         date={this.props.startDate}
                         mode="date"
                         placeholder="select date"
-                        format="YYYY-MM-DD"
+                        format="ddd, MMM D, YYYY"
                         minDate={new Date(1916, 8, 25)}
                         maxDate={new Date()}
                         confirmBtnText="Confirm"
@@ -53,7 +53,7 @@ class ParkCheckInDatePicker extends Component {
                         date={this.props.endDate}
                         mode="date"
                         placeholder="select date"
-                        format="YYYY-MM-DD"
+                        format="ddd, MMM D, YYYY"
                         minDate={this.props.startDate}
                         maxDate={new Date()}
                         confirmBtnText="Confirm"
