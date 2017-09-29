@@ -1,7 +1,9 @@
 import React from "react";
 import {Image, Text} from "react-native";
 import {Body, Container, Content, Button} from "native-base";
-import ParkCheckInForm from "./ParkCheckInForm";
+import ParkCheckInRating from "./ParkCheckInRating";
+import ParkCheckInReview from "./ParkCheckInReview";
+import ParkCheckInDatePicker from "./ParkCheckInDatePicker";
 
 const ParkCheckInMain = ({park}) => {
     const {
@@ -25,7 +27,11 @@ const ParkCheckInMain = ({park}) => {
                 <Image source={require(`../../assets/images/parks/arrowhead.png`)}/>
                 </Body>
 
-                <ParkCheckInForm />
+                <ParkCheckInRating />
+
+                <ParkCheckInReview />
+
+                <ParkCheckInDatePicker />
 
                 {/*submit button*/}
                 <Button block success style={checkInButtonStyle}>
