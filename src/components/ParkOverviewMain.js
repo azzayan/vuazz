@@ -29,14 +29,14 @@ const ParkOverviewMain = ({park}) => {
                 </Body>
 
                 {/*check in button*/}
-                <Button block success style={checkInButtonStyle} onPress={() => Actions.parkCheckInMain({park})}>
+                <Button block success style={checkInButtonStyle} onPress={() => Actions.parkCheckInCreate({park})}>
                     <Text style={buttonTextStyle}>
                         CHECK IN!
                     </Text>
                 </Button>
 
                 {/* description */}
-                <Card style={descriptionContainerStyle}>
+                <Card style={cardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
                         <Text style={subHeaderTextStyle}>Description</Text>
                     </CardItem>
@@ -46,7 +46,7 @@ const ParkOverviewMain = ({park}) => {
                 </Card>
 
                 {/* weather info */}
-                <Card style={{flex: 1, marginRight: 10, marginLeft: 10}}>
+                <Card style={cardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
                         <Text style={subHeaderTextStyle}>Weather</Text>
                     </CardItem>
@@ -92,7 +92,7 @@ const styles = {
         marginTop: 0,
         marginBottom: -14
     },
-    descriptionContainerStyle: {
+    cardContainerStyle: {
         marginTop: 20,
         marginRight: 10,
         marginLeft: 10,
@@ -126,7 +126,7 @@ const {
     headerTextStyle,
     subHeaderTextStyle,
     subHeaderTitleContainerStyle,
-    descriptionContainerStyle,
+    cardContainerStyle,
     checkInButtonStyle,
     urlButtonStyle,
     buttonTextStyle

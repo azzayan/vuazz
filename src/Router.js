@@ -3,7 +3,7 @@ import {Router, Scene} from "react-native-router-flux";
 import LoginForm from "./components/LoginForm";
 import ParkList from "./components/ParkList";
 import ParkOverviewMain from "./components/ParkOverviewMain";
-import ParkCheckInMain from "./components/ParkCheckInMain";
+import ParkCheckInCreate from "./components/ParkCheckInCreate";
 import ActivityFeed from "./components/ActivityFeed";
 import UserProfile from "./components/UserProfile";
 import Alerts from "./components/Alerts";
@@ -21,7 +21,7 @@ const RouterComponent = () => {
                 <Scene key="activityFeed" component={ActivityFeed} title="Activity Feed"/>
                 <Scene key="parkList" component={ParkList} title="National Park Units"/>
                 <Scene key="parkOverview" component={ParkOverviewMain} title="Park Overview"/>
-                <Scene key="parkCheckInMain" component={ParkCheckInMain} title="Check In to Park!"/>
+                <Scene key="parkCheckInCreate" component={ParkCheckInCreate} title="Check In to Park!"/>
                 <Scene key="userProfile" component={UserProfile} title="Your Profile"/>
                 <Scene key="userAlerts" component={Alerts} title="Alerts"/>
             </Scene>
