@@ -64,10 +64,10 @@ const ParkOverviewMain = ({park}) => {
                         <Text style={subHeaderTextStyle}>HOW TO GET THERE</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Lat/Long: {latLong}</Text>
+                        <Text>Directions: {directionsInfo}</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Directions: {directionsInfo}</Text>
+                        <Text>Lat/Long: {latLong}</Text>
                     </CardItem>
                     <CardItem>
                         <Text style={{fontWeight: "bold"}}
