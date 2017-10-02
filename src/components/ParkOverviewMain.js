@@ -10,7 +10,10 @@ const ParkOverviewMain = ({park}) => {
         states,
         description,
         weatherInfo,
-        url
+        url,
+        directionsInfo,
+        directionsUrl,
+        latLong
     } = park;
 
     return (
@@ -38,7 +41,7 @@ const ParkOverviewMain = ({park}) => {
                 {/* description */}
                 <Card style={cardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>Description</Text>
+                        <Text style={subHeaderTextStyle}>DESCRIPTION</Text>
                     </CardItem>
                     <CardItem>
                         <Text>{description}</Text>
@@ -48,10 +51,31 @@ const ParkOverviewMain = ({park}) => {
                 {/* weather info */}
                 <Card style={cardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>Weather</Text>
+                        <Text style={subHeaderTextStyle}>WEATHER</Text>
                     </CardItem>
                     <CardItem>
                         <Text>{weatherInfo}</Text>
+                    </CardItem>
+                </Card>
+
+                {/* how to get there */}
+                <Card style={cardContainerStyle}>
+                    <CardItem style={subHeaderTitleContainerStyle}>
+                        <Text style={subHeaderTextStyle}>HOW TO GET THERE</Text>
+                    </CardItem>
+                    <CardItem>
+                        <Text>Lat/Long: {latLong}</Text>
+                    </CardItem>
+                    <CardItem>
+                        <Text>Directions: {directionsInfo}</Text>
+                    </CardItem>
+                    <CardItem>
+                        <Text style={{fontWeight: "bold"}}
+                              onPress={() => {
+                                  Linking.openURL(directionsUrl).catch(err => console.error(`The directions URL for ${name} don't work`, err));
+                              }}>
+                            Tap here for more info on directions (if any)
+                        </Text>
                     </CardItem>
                 </Card>
 
@@ -90,7 +114,7 @@ const styles = {
     },
     subHeaderTitleContainerStyle: {
         marginTop: 0,
-        marginBottom: -14
+        marginBottom: -13
     },
     cardContainerStyle: {
         marginTop: 20,
