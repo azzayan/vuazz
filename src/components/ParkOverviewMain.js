@@ -48,16 +48,6 @@ const ParkOverviewMain = ({park}) => {
                     </CardItem>
                 </Card>
 
-                {/* weather info */}
-                <Card style={cardContainerStyle}>
-                    <CardItem style={subHeaderTitleContainerStyle}>
-                        <Text style={subHeaderTextStyle}>WEATHER</Text>
-                    </CardItem>
-                    <CardItem>
-                        <Text>{weatherInfo}</Text>
-                    </CardItem>
-                </Card>
-
                 {/* how to get there */}
                 <Card style={cardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
@@ -76,6 +66,16 @@ const ParkOverviewMain = ({park}) => {
                               }}>
                             Tap here for more info on directions (if any)
                         </Text>
+                    </CardItem>
+                </Card>
+
+                {/* weather info */}
+                <Card style={cardContainerStyle}>
+                    <CardItem style={subHeaderTitleContainerStyle}>
+                        <Text style={subHeaderTextStyle}>WEATHER</Text>
+                    </CardItem>
+                    <CardItem>
+                        <Text>{weatherInfo}</Text>
                     </CardItem>
                 </Card>
 
