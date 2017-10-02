@@ -39,7 +39,7 @@ const ParkOverviewMain = ({park}) => {
                 </Button>
 
                 {/* description */}
-                <Card style={cardContainerStyle}>
+                <Card style={topCardContainerStyle}>
                     <CardItem style={subHeaderTitleContainerStyle}>
                         <Text style={subHeaderTextStyle}>DESCRIPTION</Text>
                     </CardItem>
@@ -116,8 +116,13 @@ const styles = {
         marginTop: 0,
         marginBottom: -13
     },
-    cardContainerStyle: {
+    topCardContainerStyle: {
         marginTop: 20,
+        marginRight: 10,
+        marginLeft: 10,
+        flex: 1
+    },
+    cardContainerStyle: {
         marginRight: 10,
         marginLeft: 10,
         flex: 1
@@ -153,7 +158,8 @@ const {
     cardContainerStyle,
     checkInButtonStyle,
     urlButtonStyle,
-    buttonTextStyle
+    buttonTextStyle,
+    topCardContainerStyle
 } = styles;
 
 export default ParkOverviewMain;
