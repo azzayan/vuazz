@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {TouchableOpacity} from "react-native";
-import {Container, Content, Icon, Item} from "native-base";
+import {Container, Content, Icon, Item, Spinner} from "native-base";
 import SearchInput, {createFilter} from "react-native-search-filter";
 import {Actions} from "react-native-router-flux";
 import ParkListItem from "./ParkListItem";
@@ -11,14 +11,19 @@ const styles = {
     searchBoxStyle: {
         margin: 12,
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: "flex-start",
     },
     headerTextStyle: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: "bold"
+    },
+    spinnerStyle: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     }
 };
-const {searchBoxStyle} = styles;
+const {searchBoxStyle, spinnerStyle} = styles;
 
 export default class ParkList extends Component {
     state = {parks: [], searchTerm: "", filteredParks: []};
@@ -52,7 +57,7 @@ export default class ParkList extends Component {
         this.setState({searchTerm: term})
     }
 
-    // render list of parks (filtered, unfiltered, don't matter)
+    // render list of parks (filtered, unfiltered, don"t matter)
     renderParks() {
         return this.state.filteredParks.map(park => {
             return (
@@ -65,27 +70,59 @@ export default class ParkList extends Component {
         });
     }
 
+    renderSearchBar() {
+        return (
+            <Item>
+                <Icon style={{marginLeft: 15}} name="md-search"/>
+                <SearchInput style={searchBoxStyle}
+                             placeholder="Search for a park..."
+                             onChangeText={(term) => {
+                                 this.searchUpdated(term)
+                             }}
+                />
+            </Item>
+        )
+    }
+
+    renderFooter() {
+        return (
+            <FooterBar/>
+        )
+    }
+
     render() {
         // update filtered parks array from search bar
         this.state.filteredParks = this.state.parks.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 
+        if (this.state.parks.length === 0) {
+            return (
+                <Container>
+                    {/*search bar*/}
+                    {this.renderSearchBar()}
+
+                    {/*list of parks*/}
+                    <Content>
+                        <Spinner style={spinnerStyle} color="#6AC700"/>
+                    </Content>
+
+                    {/*footer*/}
+                    {this.renderFooter()}
+                </Container>
+            )
+        }
+
         return (
             <Container>
                 {/*search bar*/}
-                <Item>
-                    <Icon style={{marginLeft: 15}} name="md-search"/>
-                    <SearchInput style={searchBoxStyle}
-                                 placeholder="Search for a park..."
-                                 onChangeText={(term) => {
-                                     this.searchUpdated(term)
-                                 }}
-                    />
-                </Item>
+                {this.renderSearchBar()}
+
                 {/*list of parks*/}
                 <Content>
                     {this.renderParks()}
                 </Content>
-                <FooterBar/>
+
+                {/*footer*/}
+                {this.renderFooter()}
             </Container>
         );
     }
